@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "sampleuser",
+      "password": "123",
+      "token": "sampletoken123"
+    },
+    {
+      "id": 2,
+      "username": "oscar",
+      "password": "123",
+      "token": "sampletoken123"
+    }
+  ]
+}
