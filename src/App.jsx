@@ -1,9 +1,11 @@
-import PageLogin from "./pages/pageLogin";
+import PageLogin from "./pages/PageLogin";
+import PageHome from "./pages/PageHome";
 
 function App() {
   return (
     <div>
       <PageLogin />
+      <PageHome />
     </div>
   );
 }
