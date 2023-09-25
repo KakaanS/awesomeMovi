@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import movieData from "../data/movies.json";
 import Category from "../component/Category";
 
+/**
+ * 
+ * @returns All categories including all the movies with the category
+ */
+
 const Categories = () => {
   const [categories, setCategories] = useState([]);
 

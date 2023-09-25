@@ -6,7 +6,7 @@ test.skip("should display 'Categories'", () => {
    render(<Categories />)
    expect(screen.getByText('Categories')).toBeInTheDocument();
 })
-test("should display genres", () => {
+test("should display 'Action', 'Drama', and 'Thriller'", () => {
    render(<Categories />)
    expect(screen.getByText("Action")).toBeInTheDocument();
    expect(screen.getByText("Drama")).toBeInTheDocument();
