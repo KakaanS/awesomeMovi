@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import movieData from "../data/movies.json";
+import Category from "../component/Category";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -14,12 +15,11 @@ const Categories = () => {
      ];
      setCategories(uniqueGenres)
   }, [])
-  console.log(categories)
 
   return (
    <div>
-      <h3>categories: </h3>
-      {categories.map((category, index) => <p key={index}>{category}</p>)}
+      <h2>Categories</h2>
+      {categories.map((category, index) => <Category key={index} category={category}/>)}
    </div>
 
    );
