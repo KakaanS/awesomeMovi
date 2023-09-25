@@ -1,5 +1,5 @@
-import PageLogin from "./pages/PageLogin";
-import PageHome from "./pages/PageHome";
+import PageLogin from "./pages/Login";
+import PageHome from "./pages/Home";
 
 function App() {
   return (
