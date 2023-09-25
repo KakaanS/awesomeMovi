@@ -10,4 +10,11 @@ test("should display genres", () => {
    render(<Categories />)
    expect(screen.getByText("Action")).toBeInTheDocument();
    expect(screen.getByText("Drama")).toBeInTheDocument();
+   expect(screen.getByText("Thriller")).toBeInTheDocument();
+
+})
+test("should display all 15 category titles", () => {
+   render(<Categories />)
+   const headings = screen.getAllByRole('heading', { level: 3 })
+   expect(headings.length).toBe(15)
 })
