@@ -8,9 +8,33 @@
     },
     {
       "id": 2,
-      "username": "oscar",
+      "username": "Oscar",
       "password": "123",
-      "token": "sampletoken123"
+      "token": "sampletoken1234"
+    },
+    {
+      "id": 2,
+      "username": "Natalie",
+      "password": "123",
+      "token": "sampletoken12345"
+    },
+    {
+      "id": 2,
+      "username": "Omar",
+      "password": "123",
+      "token": "sampletoken123456"
+    },
+    {
+      "id": 2,
+      "username": "Stephanie",
+      "password": "123",
+      "token": "sampletoken1234567"
+    },
+    {
+      "id": 2,
+      "username": "Matilda",
+      "password": "123",
+      "token": "sampletoken12345678"
     }
   ]
 }

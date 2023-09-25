@@ -1,28 +1,35 @@
 import { createContext, useContext } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 const AuthContext = createContext();
 
-//diable-eslint(react-refresh/only-export-components)
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-// Disable ESLint for the children prop
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const login = (token) => {
-    // set token to be stored in a cookie
+  useEffect(() => {
+    const storedToken = Cookies.get("token");
+    if (storedToken) {
+      setUser({ token: storedToken });
+    }
+    console.log("Found token", storedToken);
+  }, []);
 
-    setUser({ token });
+  const login = (token) => {
+    Cookies.set("token", token, { expires: 7 }); // 7 days to expiration (rätt säker)
+    console.log("logged in and set token", token);
   };
 
   const logout = () => {
-    // remove token from cookie
-
+    Cookies.remove("token");
     setUser(null);
+    console.log("logged out and removed token");
   };
 
   const value = {

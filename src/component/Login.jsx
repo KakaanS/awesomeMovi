@@ -15,7 +15,7 @@ const Login = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
-      const resp = await fetch("mockServerApiURL", {
+      const resp = await fetch("/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,14 +24,15 @@ const Login = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        console.log(data);
+        console.log("Server response data:", data); // Log the data received from the server
         const token = data.token;
         login(token);
       } else {
-        console.log("wrong crendentials");
+        console.log("Server response not OK:", resp.status, resp.statusText); // Log the response status and status text
+        console.log("Wrong credentials");
       }
     } catch (error) {
-      console.log(error);
+      console.log("Error:", error); // Log any fetch errors
     }
   };
 
