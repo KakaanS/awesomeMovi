@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const AuthContext = createContext();
 
+//diable-eslint(react-refresh/only-export-components)
 export const useAuth = () => {
   return useContext(AuthContext);
 };
