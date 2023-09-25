@@ -16,7 +16,13 @@ const Categories = () => {
   }, [])
   console.log(categories)
 
-  return <div>Hello world</div>;
+  return (
+   <div>
+      <h3>categories: </h3>
+      {categories.map((category, index) => <p key={index}>{category}</p>)}
+   </div>
+
+   );
 };
 
 export default Categories;
