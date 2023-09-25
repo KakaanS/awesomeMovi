@@ -1,9 +1,4 @@
-import { useState } from "react";
-
 const Login = () => {
-  const [userName, setUsername] = useState("");
-  const [passWord, setPassword] = useState("");
-
   const loginHandler = (e) => {
     e.preventDefault();
   };
