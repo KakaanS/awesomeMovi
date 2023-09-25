@@ -8,6 +8,8 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
+// Disable ESLint for the children prop
+// eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
