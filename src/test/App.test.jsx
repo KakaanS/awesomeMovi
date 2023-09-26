@@ -19,7 +19,7 @@ test("full app rendering landing page", async () => {
   expect(screen.getByText("Trending")).toBeInTheDocument();
 });
 
-// Test to verify that the content is not rendered on a bad route
+// Test to verify that the navbar aswell as the maincontent is not rendered on a bad route
 test("landing on a bad page", () => {
   const badRoute = "/some/bad/route";
   render(
@@ -28,4 +28,5 @@ test("landing on a bad page", () => {
     </MemoryRouter>
   );
   expect(screen.queryByText("HOME")).toBeNull();
+  expect(screen.queryByText("Recommended for you")).toBeNull();
 });
