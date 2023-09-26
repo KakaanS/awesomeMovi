@@ -9,20 +9,9 @@ const Title = ({ text }) => {
         position: 'relative',
     };
 
-    const lineStyle = {
-        content: '""',
-        position: 'absolute',
-        bottom: '0',
-        left: '10px',
-        width: '30%',
-        height: '1px',
-        backgroundColor: '#008E7E',
-    };
-
     return (
         <h2 style={TitleStyle}>
             {text}
-            <span style={lineStyle}></span>
         </h2>
     );
 };
