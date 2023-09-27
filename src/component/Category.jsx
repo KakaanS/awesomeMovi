@@ -1,19 +1,19 @@
-import movieData from "../data/movies.json";
-import MovieItem from "./MovieItem";
+import React from 'react';
+import MovieCard from './ui/MovieCard'; // Importera din nya komponent
+import movieData from '../data/movies.json';
+import Subheading from './ui/Subheading';
 
+// Displays all the movies from a specific category
 const Category = ({ category }) => {
-  const moviesWithCategory = movieData.filter((movie) =>
-    movie.genre.split(", ").some((genre) => genre === category)
+  const moviesInCategory = movieData.filter((movie) =>
+    movie.genre.split(', ').some((genre) => genre === category)
   );
-
   return (
     <div>
-      <h3>{category}</h3>
-      <ul>
-        {moviesWithCategory.map((movie) => (
-          <MovieItem movie={movie} />
-        ))}
-      </ul>
+      <Subheading text={category} />
+      {moviesInCategory.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} />
+      ))}
     </div>
   );
 };

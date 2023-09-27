@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Movie = ({ movie }) => {
+const MovieCard = ({ movie }) => {
   const movieStyle = {
     display: 'inline-block', 
     margin: '10px', 
@@ -8,7 +8,7 @@ const Movie = ({ movie }) => {
   };
 
   const imageStyle = {
-    width: '200px'
+    width: '200px',
   };
 
   const movieTitleStyle = {
@@ -26,4 +26,4 @@ const Movie = ({ movie }) => {
   );
 };
 
-export default Movie;
+export default MovieCard;
