@@ -1,6 +1,6 @@
 import dataBase from '../data/movies.json';
-import MoviesHomeRecomended from "../component/ui/MoviesHomeRecomended";
-import Title from "../component/ui/Title"; 
+import MovieCard from './ui/MovieCard';
+import TitleLine from './ui/TitleLine';
 
 const RecomendedMovies = () => {
 
@@ -19,10 +19,10 @@ const RecomendedMovies = () => {
 
   return (
     <div>
-      <Title text="Recommended for you" /> 
+      <TitleLine text="Recommended for you" /> 
       <div>
         {randomMovies.map(movie => (
-          <MoviesHomeRecomended key={movie.id} movie={movie} />
+          <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
     </div>

@@ -1,19 +1,21 @@
 import React from 'react';
 
-const Title = ({ text }) => {
-    const TitleStyle = {
+const BodyText = ({ text }) => {
+    const BodyTextStyle = {
         padding: '10px 10px',
         color: '#fff',
         textTransform: 'uppercase',
-        textAlign: 'left',
+        textAlign: 'center',
         position: 'relative',
+        textSize: '10px'
     };
+  
 
     return (
-        <h2 style={TitleStyle}>
+        <p style={BodyTextStyle}>
             {text}
-        </h2>
+        </p>
     );
 };
 
-export default Title;
+export default BodyText;
