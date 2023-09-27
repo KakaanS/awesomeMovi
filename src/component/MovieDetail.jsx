@@ -4,7 +4,6 @@ const MovieDetail = ({ movie }) => {
   return (
     <div>
       <Navbar />
-      <SearchBox />
       <h2>{movie.title}</h2>
       <p>RATING: {movie.rating}</p>
       <p>ACTORS: {movie.actors}</p>
