@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthCtx";
 import userData from "../data/userData.json";
 
 /**
- * Login component, with loginHandler function making the API call to mockServer
+ * Login component, with loginHandler checking data from userData.json (our supersafe DB)
  */
 
 const Login = () => {
