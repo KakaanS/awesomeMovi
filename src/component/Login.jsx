@@ -12,18 +12,22 @@ const Login = () => {
   const { login } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
+      setMessage("Loading...");
       const user = userData.users.find(
         (user) => user.username === username && user.password === password
       );
       if (user) {
         const token = user.token;
         login(token);
+        setMessage("You are logged in!");
         console.log("logged in and set token", token);
       } else {
+        setMessage("Wrong username or password");
         throw new Error("Wrong username or password");
       }
     } catch (error) {
@@ -47,6 +51,7 @@ const Login = () => {
         />
         <button type="submit">Login</button>
       </form>
+      {message && <p>{message}</p>}
     </div>
   );
 };

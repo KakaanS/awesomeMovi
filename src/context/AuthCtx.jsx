@@ -1,8 +1,9 @@
 import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
@@ -12,24 +13,37 @@ export const useAuth = () => {
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedToken = Cookies.get("token");
     if (storedToken) {
       setUser({ token: storedToken });
+      navigate("/");
+    } else {
+      navigate("/login");
     }
     console.log("Found token", storedToken);
-  }, []);
+  }, [navigate]);
 
   const login = (token) => {
-    Cookies.set("token", token, { expires: 7 }); // 7 days to expiration (rätt säker)
+    try {
+      Cookies.set("token", token, { expires: 7, secure: true });
+      navigate("/");
+    } catch (error) {
+      console.error("Failed to log in:", error);
+    }
     console.log("logged in and set token", token);
   };
 
   const logout = () => {
-    Cookies.remove("token");
-    setUser(null);
-    console.log("logged out and removed token");
+    try {
+      Cookies.remove("token");
+      setUser(null);
+      navigate("/login");
+    } catch (error) {
+      console.error("Failed to log out:", error);
+    }
   };
 
   const value = {
