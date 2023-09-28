@@ -17,19 +17,28 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const storedToken = Cookies.get("token");
+
     if (storedToken) {
       setUser({ token: storedToken });
-      navigate("/");
+      console.log("Found token", storedToken);
     } else {
       navigate("/login");
     }
-    console.log("Found token", storedToken);
   }, [navigate]);
+
+  useEffect(() => {
+    if (user && user.token) {
+      console.log(user.token);
+      navigate("/");
+    }
+  }, [navigate, user]);
 
   const login = (token) => {
     try {
       Cookies.set("token", token, { expires: 7, secure: true });
+      setUser({ token: token });
       navigate("/");
+      console.log(token);
     } catch (error) {
       console.error("Failed to log in:", error);
     }

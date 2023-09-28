@@ -16,6 +16,7 @@ const Login = () => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
+    console.log("login handler");
     try {
       setMessage("Loading...");
       const user = userData.users.find(

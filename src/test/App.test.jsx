@@ -1,7 +1,7 @@
-import { expect, test, vi, waitFor } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { expect, test, vi } from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
 import App from "../App";
-import { BrowserRouter, MemoryRouter, Router } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import AuthProvider from "../context/AuthCtx";
 import { AuthContext } from "../context/AuthCtx";
 import userEvent from "@testing-library/user-event";
@@ -46,11 +46,11 @@ test("landing on a bad page", () => {
 
 test("if user gets authenticated", async () => {
   render(
-    <Router>
+    <MemoryRouter>
       <AuthProvider>
         <App />
       </AuthProvider>
-    </Router>
+    </MemoryRouter>
   );
   const usernameInput = screen.getByPlaceholderText("Username");
   const passwordInput = screen.getByPlaceholderText("Password");
