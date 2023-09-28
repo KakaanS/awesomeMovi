@@ -2,7 +2,7 @@ import React from 'react';
 
 const TitleLine = ({ text }) => {
     const TitleLineStyle = {
-        padding: '10px 10px',
+        padding: '10px ',
         color: '#fff',
         textTransform: 'uppercase',
         textAlign: 'left',
