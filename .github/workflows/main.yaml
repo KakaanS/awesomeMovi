@@ -3,6 +3,8 @@ name: Deployment
 on: #this workflow runs on pull requests and pushes to main or master
   push:
     branches: [main, master, test]
+  pull_request:
+    branches: [test]
 
 #this is a list of all jobs
 jobs:
