@@ -1,4 +1,6 @@
 import dataBase from '../data/movies.json'
+import TitleLine from './ui/TitleLine';
+import MovieCard from './ui/MovieCard';
 
 const TrendingMovies = () => {
 
@@ -11,20 +13,17 @@ const TrendingMovies = () => {
     const trendingMovies = getTrendningMovies(dataBase)
 
   // we return the list of the trending movies
-
-    return (
-        <div>
-        <h2>Trending</h2>
-        <ul>
-          {trendingMovies.map(movie => (
-            <li key={movie.id}>
-                <img  src={movie.thumbnail} alt={movie.name}/>
-              <p>{movie.title}</p>
-            </li>
-          ))}
-        </ul>
+  
+  return (
+    <div>
+      <TitleLine text="Trending" /> 
+      <div>
+        {trendingMovies.map(movie => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
       </div>
-    )
-}
+    </div>
+  );
+};
 
 export default TrendingMovies
