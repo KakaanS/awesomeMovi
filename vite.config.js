@@ -10,4 +10,5 @@ export default defineConfig({
     css: true,
     setupFiles: "./src/test/setup.js",
   },
+  base: "/awesomeMovi/",
 });

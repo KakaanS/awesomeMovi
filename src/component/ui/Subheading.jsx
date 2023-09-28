@@ -2,7 +2,7 @@ import React from 'react';
 
 const Subheading = ({ text }) => {
     const SubheadingStyle = {
-        padding: '10px 10px',
+        padding: '10px',
         color: '#fff',
         textTransform: 'uppercase',
         textAlign: 'left',
