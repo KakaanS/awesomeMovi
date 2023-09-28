@@ -14,20 +14,23 @@ test("Renderar filminformation korrekt från databasen", async () => {
     thumbnail: "exempel.jpg",
   };
 
-  const { getByText } = render(MovieDetail, {
+  const { getByText, getByAltText } = render(MovieDetail, {
     props: { movie: mockMovie },
   });
 
   // Kontrollera om komponenten visar korrekt filminformation.
-  expect(getByText("Exempelfilm")).toBeTruthy();
-  expect(getByText("RATING: 8.5")).toBeTruthy();
-  expect(getByText("ACTORS: Skådespelare 1, Skådespelare 2")).toBeTruthy();
-  expect(getByText("GENRE: Action")).toBeTruthy();
+  expect(getByText("Exempelfilm").textContent).toMatch("Exempelfilm");
+  expect(getByText("RATING: 8.5").textContent).toMatch("RATING: 8.5");
   expect(
-    getByText("SYNOPSIS: Detta är en exempelbeskrivning av filmen.")
-  ).toBeTruthy();
+    getByText("ACTORS: Skådespelare 1, Skådespelare 2").textContent
+  ).toMatch("ACTORS: Skådespelare 1, Skådespelare 2");
+  expect(getByText("GENRE: Action").textContent).toMatch("GENRE: Action");
+  expect(
+    getByText("SYNOPSIS: Detta är en exempelbeskrivning av filmen.").textContent
+  ).toMatch("SYNOPSIS: Detta är en exempelbeskrivning av filmen.");
 
   // Kontrollera om bilden visas och källa är korrekta.
-  expect(image).toBeTruthy();
+  const image = getByAltText("Movie Thumbnail");
+  expect(image).toBeDefined();
   expect(image.getAttribute("src")).toContain("exempel.jpg");
 });
