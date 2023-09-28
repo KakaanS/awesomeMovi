@@ -6,8 +6,8 @@ import Categories from "./pages/Categories";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/categories" element={<Categories />} />
+      <Route path="/awesomeMovi/" element={<Home />} />
+      <Route path="/awesomeMovi/categories" element={<Categories />} />
     </Routes>
   );
 }
