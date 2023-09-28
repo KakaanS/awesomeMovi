@@ -3,19 +3,21 @@ import MovieCard from './ui/MovieCard';
 import TitleLine from './ui/TitleLine';
 
 const RecomendedMovies = () => {
+  // Plocka ut filmer som inte har trending=true
+  const nonTrendingMovies = dataBase.filter(movie => movie.isTrending !== true);
 
-  // Picking out random movies 
-
-  function getRecommendedMovies(database, count) {
-    const shuffled = database.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
+  // Blanda de icke-trending filmerna slumpmässigt
+  function shuffleArray(array) {
+    const shuffled = array.slice();
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
   }
 
-  // We want six random movies from the database
-  
-  const randomMovies = getRecommendedMovies(dataBase, 6);
-
-  // We return the list of the films we randomly found
+  // Välj sex slumpmässiga icke-trending filmer
+  const randomMovies = shuffleArray(nonTrendingMovies).slice(0, 6);
 
   return (
     <div>
