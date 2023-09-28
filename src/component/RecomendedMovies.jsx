@@ -16,7 +16,7 @@ const RecomendedMovies = () => {
     return shuffled;
   }
 
-  // Välj sex slumpmässiga icke-trending filmer
+  // Välj fem slumpmässiga icke-trending filmer
   const randomMovies = shuffleArray(nonTrendingMovies).slice(0, 5);
 
 
