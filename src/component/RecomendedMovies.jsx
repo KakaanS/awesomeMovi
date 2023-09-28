@@ -13,7 +13,7 @@ const RecomendedMovies = () => {
 
   // We want six random movies from the database
   
-  const randomMovies = getRecommendedMovies(dataBase, 6);
+  const randomMovies = getRecommendedMovies(dataBase, 5);
 
   // We return the list of the films we randomly found
 
