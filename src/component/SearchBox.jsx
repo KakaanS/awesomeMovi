@@ -1,5 +1,8 @@
-import { useState, useEffect } from 'react';
+// SearchBox.jsx
+import React, { useState, useEffect } from 'react';
 import movieData from '../data/movies.json'; 
+import MovieCard from './ui/MovieCard';
+import SearchbarInput from './ui/SearchbarInput';
 
 const SearchBox = () => {
   const [searchText, setSearchText] = useState('');
@@ -22,20 +25,17 @@ const SearchBox = () => {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Sök efter en filmtitel..."
+      <SearchbarInput
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
 
       <div>
-        {searchResults.map((movie) => (
-          <div key={movie.id}>
-            <img src={movie.thumbnail} alt={movie.title} />
-            <h3>{movie.title}</h3>
-          </div>
-        ))}
+        <div>
+          {searchResults.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </div>
       </div>
     </div>
   );
