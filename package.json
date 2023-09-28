@@ -8,7 +8,7 @@
       "build": "vite build",
       "preview": "vite preview",
       "test": "vitest",
-      "lint": "npx eslint src/**/*.js"
+      "lint": "npx eslint src/**/*.jsx & npx stylelint **/*.css"
    },
    "dependencies": {
       "react": "^18.2.0",
@@ -27,6 +27,8 @@
       "eslint-plugin-react-hooks": "^4.6.0",
       "eslint-plugin-react-refresh": "^0.4.3",
       "jsdom": "^22.1.0",
+      "stylelint": "^15.10.3",
+      "stylelint-config-standard": "^34.0.0",
       "vite": "^4.4.5",
       "vitest": "^0.34.5"
    }
