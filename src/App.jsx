@@ -1,22 +1,15 @@
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home.jsx";
 import Categories from "./pages/Categories";
 
-/**
- *
- * @returns Lägg till conditinal rendering här för att visa Home när man loggat in eller Login när användaren inte är autentisierad. Tex element= {token ? <Home /> : <Navigate to='/login'}
- */
-const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<Categories />} />)
-);
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/categories" element={<Categories />} />
+    </Routes>
+  );
 }
 
 export default App;
