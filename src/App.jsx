@@ -6,9 +6,9 @@ import MovieDetailPage from "./pages/MovieDetail";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/categories" element={<Categories />} />
       <Route path="/movie/:id" element={<MovieDetailPage />} />
+      <Route path="/awesomeMovi/" element={<Home />} />
+      <Route path="/awesomeMovi/categories" element={<Categories />} />
     </Routes>
   );
 }
