@@ -2,7 +2,7 @@ name: Deployment
 
 on: #this workflow runs on pull requests and pushes to main or master
   push:
-    branches: [main, master, test]
+    branches: [main, master, test, gh-pages-deploy]
   pull_request:
     branches: [test]
 
