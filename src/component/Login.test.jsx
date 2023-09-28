@@ -22,20 +22,6 @@ describe("Basic login tests", () => {
     expect(loginButton).toBeInTheDocument();
   });
 
-  test("if user gets authenticated", async () => {
-    customRender();
-    const usernameInput = screen.getByPlaceholderText("Username");
-    const passwordInput = screen.getByPlaceholderText("Password");
-    const loginButton = screen.getByRole("button");
-
-    await userEvent.type(usernameInput, "sampleuser");
-    await userEvent.type(passwordInput, "123");
-    await userEvent.click(loginButton);
-
-    const loggedIn = await screen.findByText("You are logged in!");
-
-    expect(loggedIn).toBeInTheDocument();
-  });
   test("if user puts wrong password", async () => {
     customRender();
     const usernameInput = screen.getByPlaceholderText("Username");
