@@ -1,3 +1,4 @@
+// Navbar.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -20,15 +21,16 @@ const Navbar = () => {
     textTransform: 'uppercase', 
     color: '#fff', 
     fontWeight: 800, 
-    textDecoration: 'none', 
+    textDecoration: 'none',
+    transition: 'color 0.3s',
   };
 
   return (
     <nav style={navbarStyle}>
       <ul style={ulStyle}>
-        <li style={liStyle}><Link to="" style={linkStyle}>HOME</Link></li>
-        <li style={liStyle}><Link to="" style={linkStyle}>CATEGORY</Link></li>
-        <li style={liStyle}><Link to="" style={linkStyle}>BOOKMARKS</Link></li>
+        <li style={liStyle}><Link to="/" style={linkStyle} className="link">HOME</Link></li>
+        <li style={liStyle}><Link to="/categories" style={linkStyle} className="link">CATEGORY</Link></li>
+        <li style={liStyle}><Link to="" style={linkStyle} className="link">BOOKMARKS</Link></li>
       </ul>
     </nav>  
   );
