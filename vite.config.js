@@ -9,5 +9,6 @@ export default defineConfig({
       environment: 'jsdom',
       css: true,
       setupFiles: './src/test/setup.js',
-   }
+   },
+   base: "/awesomeMovi/"
 })
