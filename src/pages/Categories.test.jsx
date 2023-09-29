@@ -1,5 +1,5 @@
 import { expect, test, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import Categories from "../App";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
@@ -28,17 +28,39 @@ test("should display 'Action', 'Drama', and 'Thriller'", () => {
 
 // Test verifies that all the categories are rendered
 test("should display all 15 category titles", () => {
-  const headings = screen.getAllByRole("heading", { level: 3 });
-  expect(headings.length).toBe(15);
+  const categoriesList = screen.getAllByRole("listitem");
+  expect(categoriesList.length).toBe(15);
 });
 
-test.todo("should display movies of specific category", async () => {
-  render(<Categories />);
-  const categories = screen.getAllByRole("heading", { level: 3 });
-  const category = categories[0];
+// Test code for 'All movies' button functionality
+test("should display all movies when 'All movies' button is clicked", async () => {
+  const categoriesList = screen.getByRole("list");
+  const allMoviesButton = screen.getByRole("button", { name: "All movies" });
+
   const user = userEvent.setup();
-  user.click(category);
-  const moviesInCategory = screen.getAllByRole("listitem");
-  const firstMovie = moviesInCategory[0];
-  expect(firstMovie).toBe("The Shawshank Redemption");
+
+  const horrorButton = within(categoriesList).getByRole("button", { name: "Horror" });
+  await user.click(horrorButton);
+
+  await user.click(allMoviesButton);
+
+  expect(screen.getByText("Psycho")).toBeInTheDocument();
+  expect(screen.getByText("Schindler's List")).toBeInTheDocument();
+});
+
+// Test verifies that the correct movies within a category are rendered when clicked
+test("should display movies of specific category", async () => {
+  const categoriesList = screen.getByRole("list");
+
+  const horrorButton = within(categoriesList).getByRole("button", { name: "Horror" });
+  const historyButton = within(categoriesList).getByRole("button", { name: "History",});
+
+  const user = userEvent.setup();
+  await user.click(horrorButton);
+
+  expect(screen.getByText("Psycho")).toBeInTheDocument();
+  expect(screen.queryByText("Schindler's List")).toBeNull();
+
+  await user.click(historyButton)
+  expect(screen.getByText("Schindler's List")).toBeInTheDocument();
 });
