@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test, beforeEach} from "vitest";
 import { render, screen } from "@testing-library/react";
 import Categories from "../App";
 import { MemoryRouter } from "react-router-dom";
@@ -6,7 +6,7 @@ import userEvent  from "@testing-library/user-event";
 
 // Set up recurrent rendering configuration for testing the 'Categories' component
 beforeEach(() => {
-  const route = "/categories";
+  const route = "/awesomeMovi/categories";
   render(
     <MemoryRouter initialEntries={[route]}>
       <Categories />

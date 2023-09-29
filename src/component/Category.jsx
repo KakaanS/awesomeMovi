@@ -1,4 +1,3 @@
-import React from 'react';
 import MovieCard from './ui/MovieCard'; // Importera din nya komponent
 import movieData from '../data/movies.json';
 import Subheading from './ui/Subheading';
