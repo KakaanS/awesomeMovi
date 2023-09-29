@@ -1,12 +1,12 @@
-import { expect, test } from "vitest";
+import { expect, test, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Categories from "../App";
 import { MemoryRouter } from "react-router-dom";
-import userEvent  from "@testing-library/user-event";
+import userEvent from "@testing-library/user-event";
 
 // Set up recurrent rendering configuration for testing the 'Categories' component
 beforeEach(() => {
-  const route = "/categories";
+  const route = "/awesomeMovi/categories";
   render(
     <MemoryRouter initialEntries={[route]}>
       <Categories />
@@ -33,12 +33,12 @@ test("should display all 15 category titles", () => {
 });
 
 test.todo("should display movies of specific category", async () => {
-   render(<Categories />)
-   const categories = screen.getAllByRole('heading', {level: 3});
-   const category = categories[0]
-   const user = userEvent.setup();
-   user.click(category);
-   const moviesInCategory = screen.getAllByRole('listitem');
-   const firstMovie = moviesInCategory[0];
-   expect(firstMovie).toBe("The Shawshank Redemption");
-})
+  render(<Categories />);
+  const categories = screen.getAllByRole("heading", { level: 3 });
+  const category = categories[0];
+  const user = userEvent.setup();
+  user.click(category);
+  const moviesInCategory = screen.getAllByRole("listitem");
+  const firstMovie = moviesInCategory[0];
+  expect(firstMovie).toBe("The Shawshank Redemption");
+});
