@@ -10,7 +10,11 @@ test("should always pass", () => {
 
 // Test to verify that the landing-page (home) is fully rendered
 test("full app rendering landing page", async () => {
-  render(<App />, { wrapper: BrowserRouter });
+   const route = "/awesomeMovi";
+   
+  render(<MemoryRouter initialEntries={[route]}>
+      <App />
+    </MemoryRouter>);
 
   expect(screen.getByText("HOME")).toBeInTheDocument();
   expect(screen.getByText("CATEGORY")).toBeInTheDocument();
