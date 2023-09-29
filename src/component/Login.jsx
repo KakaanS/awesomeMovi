@@ -13,7 +13,6 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  console.log("hello world");
 
   const loginHandler = async (e) => {
     e.preventDefault();
