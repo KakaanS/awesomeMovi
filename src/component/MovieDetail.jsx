@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "../component/ui/Navbar";
 const MovieDetail = ({ movie }) => {
   return (
