@@ -12,18 +12,21 @@ test("should always pass", () => {
 });
 
 // Test to verify that the landing-page (home) is fully rendered
+test("full app rendering landing page", async () => {
+  const route = "/awesomeMovi";
 
-// Test will fail, as you can't bypass Login withouth mocking the AuthContext
-
-/* test("full app rendering landing page", async () => {
-  render(<App />, { wrapper: BrowserRouter });
+  render(
+    <MemoryRouter initialEntries={[route]}>
+      <App />
+    </MemoryRouter>
+  );
 
   expect(screen.getByText("HOME")).toBeInTheDocument();
   expect(screen.getByText("CATEGORY")).toBeInTheDocument();
   expect(screen.getByText("BOOKMARKS")).toBeInTheDocument();
   expect(screen.getByText("Recommended for you")).toBeInTheDocument();
   expect(screen.getByText("Trending")).toBeInTheDocument();
-}); */
+});
 
 // Test to verify that the navbar aswell as the maincontent is not rendered on a bad route
 test("landing on a bad page", () => {
