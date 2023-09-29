@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import MovieDetail from "../component/MovieDetail";
 import dataBase from "../data/movies.json";
