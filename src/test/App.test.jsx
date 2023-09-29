@@ -1,7 +1,10 @@
 import { expect, test } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import App from "../App";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import AuthProvider from "../context/AuthCtx";
+import { AuthContext } from "../context/AuthCtx";
+import userEvent from "@testing-library/user-event";
 
 test("should always pass", () => {
   render(<App />, { wrapper: BrowserRouter });
@@ -10,11 +13,13 @@ test("should always pass", () => {
 
 // Test to verify that the landing-page (home) is fully rendered
 test("full app rendering landing page", async () => {
-   const route = "/awesomeMovi";
-   
-  render(<MemoryRouter initialEntries={[route]}>
+  const route = "/awesomeMovi";
+
+  render(
+    <MemoryRouter initialEntries={[route]}>
       <App />
-    </MemoryRouter>);
+    </MemoryRouter>
+  );
 
   expect(screen.getByText("HOME")).toBeInTheDocument();
   expect(screen.getByText("CATEGORY")).toBeInTheDocument();
@@ -33,4 +38,44 @@ test("landing on a bad page", () => {
   );
   expect(screen.queryByText("HOME")).toBeNull();
   expect(screen.queryByText("Recommended for you")).toBeNull();
+});
+
+test("if user gets authenticated", async () => {
+  render(
+    <MemoryRouter>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </MemoryRouter>
+  );
+  const usernameInput = screen.getByPlaceholderText("Username");
+  const passwordInput = screen.getByPlaceholderText("Password");
+  const loginButton = screen.getByRole("button", { name: /login/i });
+
+  await userEvent.type(usernameInput, "sampleuser");
+  await userEvent.type(passwordInput, "123");
+
+  expect(usernameInput.value).toBe("sampleuser");
+  expect(passwordInput.value).toBe("123");
+
+  await userEvent.click(loginButton);
+
+  await waitFor(() => {
+    const loggedIn = screen.getByText("HOME");
+    expect(loggedIn).toBeInTheDocument();
+  });
+});
+
+test("If token is already set, user gets redirected to /", async () => {
+  render(
+    <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+      <AuthContext.Provider value={{ user: { token: "sampletoken123" } }}>
+        <App />
+      </AuthContext.Provider>
+    </MemoryRouter>
+  );
+
+  const redirectedToHome = await screen.findByText("HOME");
+
+  expect(redirectedToHome).toBeInTheDocument();
 });
