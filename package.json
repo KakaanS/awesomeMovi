@@ -30,6 +30,7 @@
     "stylelint": "^15.10.3",
     "stylelint-config-standard": "^34.0.0",
     "vite": "^4.4.5",
-    "vitest": "^0.34.5"
+    "vitest": "^0.34.5",
+    "js-cookie": "^3.0.1"
   }
 }
