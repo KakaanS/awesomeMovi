@@ -22,14 +22,14 @@ const AuthProvider = ({ children }) => {
       setUser({ token: storedToken });
       console.log("Found token", storedToken);
     } else {
-      navigate("/login");
+      navigate("/awesomeMovi/login");
     }
   }, [navigate]);
 
   useEffect(() => {
     if (user && user.token) {
       console.log(user.token);
-      navigate("/");
+      navigate("/awesomeMovi/");
     }
   }, [navigate, user]);
 
@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
     try {
       Cookies.set("token", token, { expires: 7, secure: true });
       setUser({ token: token });
-      navigate("/");
+      navigate("/awesomeMovi/");
       console.log(token);
     } catch (error) {
       console.error("Failed to log in:", error);
@@ -49,7 +49,7 @@ const AuthProvider = ({ children }) => {
     try {
       Cookies.remove("token");
       setUser(null);
-      navigate("/login");
+      navigate("/awesomeMovi/login");
     } catch (error) {
       console.error("Failed to log out:", error);
     }

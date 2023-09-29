@@ -7,9 +7,9 @@ import PageLogin from "./pages/Login";
 function App() {
   return (
     <Routes>
+      <Route path="/awesomeMovi/login" element={<PageLogin />} />
       <Route path="/awesomeMovi/" element={<Home />} />
       <Route path="/awesomeMovi/categories" element={<Categories />} />
-      <Route path="/awesomeMovi/login" element={<PageLogin />} />
     </Routes>
   );
 }
