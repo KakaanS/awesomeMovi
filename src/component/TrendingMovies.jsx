@@ -13,16 +13,18 @@ const TrendingMovies = () => {
   const trendingMovies = getTrendningMovies(dataBase);
 
   // we return the list of the trending movies
-  
+
   return (
     <div>
-      <TitleLine text="Trending" /> 
+      <TitleLine text="Trending" />
       <div>
         {trendingMovies.map(movie => (
-          <Link to={`/movie/${movie.id}`}> {/* Makes thumbnail and title pressable and passes the id in the url */}
+          <div key={movie.id}>
+            <Link to={`/movie/${movie.id}`}> {/* Makes thumbnail and title pressable and passes the id in the url */}
+              <MovieCard key={movie.id} movie={movie} />
+            </Link>
+          </div>
 
-          <MovieCard key={movie.id} movie={movie} />
-               </Link>
         ))}
       </div>
     </div>

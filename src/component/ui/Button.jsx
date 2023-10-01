@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Button = ({ text }) => {
   const buttonStyle = {
     backgroundColor: '#008E7E',

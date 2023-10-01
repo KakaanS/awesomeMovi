@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TitleLine = ({ text }) => {
     const TitleLineStyle = {
         padding: '10px ',

@@ -20,16 +20,17 @@ const RecomendedMovies = () => {
   // Välj fem slumpmässiga icke-trending filmer
   const randomMovies = shuffleArray(nonTrendingMovies).slice(0, 5);
 
-
   return (
     <div>
       <TitleLine text="Recommended for you" />
       <div>
         {randomMovies.map((movie) => (
-          <Link to={`/movie/${movie.id}`}>
-            {/* Makes thumbnail and title pressable and passes the id in the url */}
-            <MovieCard key={movie.id} movie={movie} />
-          </Link>
+          <div key={movie.id}>
+            <Link to={`/movie/${movie.id}`}>
+              {/* Makes thumbnail and title pressable and passes the id in the url */}
+              <MovieCard key={movie.id} movie={movie} />
+            </Link>
+          </div>
         ))}
       </div>
     </div>
