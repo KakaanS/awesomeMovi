@@ -48,20 +48,22 @@ test("if user gets authenticated", async () => {
       </AuthProvider>
     </MemoryRouter>
   );
+
   const usernameInput = screen.getByPlaceholderText("Username");
   const passwordInput = screen.getByPlaceholderText("Password");
-  const loginButton = screen.getByRole("button", { name: /login/i });
+  const loginButton = screen.getByRole("button", { name: "Login" });
+  const user = userEvent.setup();
 
-  await userEvent.type(usernameInput, "sampleuser");
-  await userEvent.type(passwordInput, "123");
+  await user.type(usernameInput, "sampleuser");
+  await user.type(passwordInput, "123");
 
   expect(usernameInput.value).toBe("sampleuser");
   expect(passwordInput.value).toBe("123");
 
-  await userEvent.click(loginButton);
+  await user.click(loginButton);
 
-  await waitFor(() => {
-    const loggedIn = screen.getByText("HOME");
+  waitFor(() => {
+    const loggedIn = screen.findByText("HOME");
     expect(loggedIn).toBeInTheDocument();
   });
 });

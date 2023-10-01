@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -15,6 +15,18 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  const justLoggedIn = useRef(false);
+
+  const login = (token) => {
+    try {
+      Cookies.set("token", token, { expires: 7, secure: true });
+      setUser({ token });
+      justLoggedIn.current = true;
+    } catch (error) {
+      console.error("Failed to log in:", error);
+    }
+  };
+
   useEffect(() => {
     const storedToken = Cookies.get("token");
 
@@ -26,20 +38,11 @@ const AuthProvider = ({ children }) => {
   }, [navigate]);
 
   useEffect(() => {
-    if (user && user.token) {
+    if (user && justLoggedIn.current) {
       navigate("/awesomeMovi/");
+      justLoggedIn.current = false;
     }
-  }, [navigate, user]);
-
-  const login = (token) => {
-    try {
-      Cookies.set("token", token, { expires: 7, secure: true });
-      setUser({ token: token });
-      navigate("/awesomeMovi/");
-    } catch (error) {
-      console.error("Failed to log in:", error);
-    }
-  };
+  }, [user]);
 
   const logout = () => {
     try {
