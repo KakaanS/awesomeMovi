@@ -1,17 +1,17 @@
 // SearchBox.jsx
-import React, { useState, useEffect } from 'react';
-import movieData from '../data/movies.json'; 
-import MovieCard from './ui/MovieCard';
-import SearchbarInput from './ui/SearchbarInput';
+import { useState, useEffect } from "react";
+import movieData from "../data/movies.json";
+import MovieCard from "./ui/MovieCard";
+import SearchbarInput from "./ui/SearchbarInput";
 
 const SearchBox = () => {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
   // filters the list of movies depending on letters / names
 
   useEffect(() => {
-    if (searchText.trim() === '') {
+    if (searchText.trim() === "") {
       setSearchResults([]);
     } else {
       const filteredMovies = movieData.filter((movie) =>

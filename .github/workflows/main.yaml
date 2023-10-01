@@ -1,17 +1,15 @@
-name: Deployment
+name: Linting and Testing
 
 on: #this workflow runs on pull requests and pushes to main or master
-  push:
-    branches: [main, master, test, gh-pages-deploy]
   pull_request:
-    branches: [test]
+    branches: [main, master, test]
+  push:
+    branches: [main, master, test]
 
 #this is a list of all jobs
 jobs:
-  deploy: #name of first job
+  testing: #name of first job
     runs-on: ubuntu-latest #sets the env which this job runs on
-    permissions:
-      contents: write
     steps: #defines the steps necessary
       - name: Checkout #checks out our current branch so this runner has the latest code
         uses: actions/checkout@v4 #uses means that it is a pre-defined action supplied by GitHub.
@@ -22,11 +20,22 @@ jobs:
 
       - name: NPM Install #we now need to install all our dependencies in this environment
         run: npm ci #npm clean install - does not write to package.json
-      - name: Build
-        run: npm run build
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Run tests #if npm test throws and error this workflow fails.
+        run: npm test
+
+  linting: #name of first job
+    runs-on: ubuntu-latest #sets the env which this job runs on
+    steps: #defines the steps necessary
+      - name: Checkout #checks out our current branch so this runner has the latest code
+        uses: actions/checkout@v4 #uses means that it is a pre-defined action supplied by GitHub.
+      - name: Setup Node
+        uses: actions/setup-node@v3 #this is also a pre-defined action
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          node-version: 20
+
+      - name: NPM Install #we now need to install all our dependencies in this environment
+        run: npm ci #npm clean install - does not write to package.json
+
+      - name: Run linters #if npm test throws and error this workflow fails.
+        run: npm run lint
