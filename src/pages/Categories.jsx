@@ -4,7 +4,6 @@ import Category from "../component/Category";
 import Navbar from "../component/ui/Navbar";
 import Title from "../component/ui/Title";
 
-
 /**
  * 
  * @returns All categories including all the movies with the category
