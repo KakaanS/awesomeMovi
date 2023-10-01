@@ -42,6 +42,7 @@ const AuthProvider = ({ children }) => {
       navigate("/awesomeMovi/");
       justLoggedIn.current = false;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const logout = () => {
