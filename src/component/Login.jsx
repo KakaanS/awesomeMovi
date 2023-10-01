@@ -16,7 +16,6 @@ const Login = () => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    console.log("login handler");
     try {
       setMessage("Loading...");
       const user = userData.users.find(
@@ -26,7 +25,6 @@ const Login = () => {
         const token = user.token;
         login(token);
         setMessage("You are logged in!");
-        console.log("logged in and set token", token);
       } else {
         setMessage("Wrong username or password");
         throw new Error("Wrong username or password");

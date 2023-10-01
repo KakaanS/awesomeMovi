@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -15,35 +15,35 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  const justLoggedIn = useRef(false);
+
+  const login = (token) => {
+    try {
+      Cookies.set("token", token, { expires: 7, secure: true });
+      setUser({ token });
+      justLoggedIn.current = true;
+    } catch (error) {
+      console.error("Failed to log in:", error);
+    }
+  };
+
   useEffect(() => {
     const storedToken = Cookies.get("token");
 
     if (storedToken) {
       setUser({ token: storedToken });
-      console.log("Found token", storedToken);
     } else {
       navigate("/awesomeMovi/login");
     }
   }, [navigate]);
 
   useEffect(() => {
-    if (user && user.token) {
-      console.log(user.token);
+    if (user && justLoggedIn.current) {
       navigate("/awesomeMovi/");
+      justLoggedIn.current = false;
     }
-  }, [navigate, user]);
-
-  const login = (token) => {
-    try {
-      Cookies.set("token", token, { expires: 7, secure: true });
-      setUser({ token: token });
-      navigate("/awesomeMovi/");
-      console.log(token);
-    } catch (error) {
-      console.error("Failed to log in:", error);
-    }
-    console.log("logged in and set token", token);
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   const logout = () => {
     try {
