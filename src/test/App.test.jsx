@@ -6,7 +6,6 @@ import AuthProvider from "../context/AuthCtx";
 import { AuthContext } from "../context/AuthCtx";
 import userEvent from "@testing-library/user-event";
 import PageLogin from "../pages/Login";
-import Home from "../pages/Home";
 
 test("should always pass", () => {
   render(<App />, { wrapper: BrowserRouter });
@@ -88,7 +87,7 @@ describe("test if user can login", () => {
   // Waiting for logout button to be integrated.
 }); */
 
-describe("testing site response and redirects", () => {
+describe("testing site navigation", () => {
   test("Can user click on a movie and see the movie details", async () => {
     render(
       <MemoryRouter initialEntries={["/awesomeMovi/"]}>
@@ -109,11 +108,26 @@ describe("testing site response and redirects", () => {
         <App />
       </MemoryRouter>
     );
-    const user = userEvent.setup();
-    const categoryPage = await screen.findByText("CATEGORY");
-    await user.click(categoryPage);
-    const category = await screen.findByText("DRAMA");
 
-    expect(category).toBeInTheDocument();
+    const category = await screen.findByText("CATEGORY");
+    userEvent.click(category);
+    screen.debug();
+
+    const categoryPage = await screen.findByText("Action");
+    expect(categoryPage).toBeInTheDocument();
   });
+
+  /* test("Can user click on bookmarks and see their bookmarks", async () => {
+    render(
+      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    const bookmarks = await screen.findByText("BOOKMARKS");
+    userEvent.click(bookmarks);
+
+    const bookmarksPage = await screen.findByText("Bookmarks");
+    expect(bookmarksPage).toBeInTheDocument();
+  }); */
 });
