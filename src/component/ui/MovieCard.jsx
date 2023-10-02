@@ -1,4 +1,7 @@
+import React from 'react';
+import BookMark from '../BookMark';
 import defaultImage from '../../noimage.png';
+
 
 const MovieCard = ({ movie }) => {
   const movieStyle = {
@@ -34,6 +37,7 @@ const MovieCard = ({ movie }) => {
         onError={handleImageError}
       />
       <p style={movieTitleStyle}>{movie.title}</p>
+      <BookMark />
     </div>
   );
 };
