@@ -3,6 +3,10 @@ import { useState } from "react";
 // function & styling
 import { useAuth } from "../context/AuthCtx";
 import userData from "../data/userData.json";
+import Button from "./ui/Button";
+import Title from "./ui/Title"
+import InputLogin from "./ui/InputLogin"
+import Form from "./ui/Form";
 
 /**
  * Login component, with loginHandler checking data from userData.json (our supersafe DB)
@@ -36,20 +40,20 @@ const Login = () => {
 
   return (
     <div>
-      <h1>Login</h1>
-      <form onSubmit={loginHandler}>
-        <input
+      <Title text="Welcome to Movi" />
+      <Form onSubmit={loginHandler}>
+        <InputLogin
           type="text"
-          placeholder="Username"
+          placeholder="Username..."
           onChange={(e) => setUsername(e.target.value)}
         />
-        <input
+        <InputLogin
           type="password"
-          placeholder="Password"
+          placeholder="Password..."
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
-      </form>
+        <Button type="submit" text="Login" />
+      </Form>
       {message && <p>{message}</p>}
     </div>
   );
