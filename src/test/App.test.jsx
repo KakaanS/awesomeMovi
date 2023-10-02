@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { describe, expect, test } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import App from "../App";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
@@ -40,44 +40,68 @@ test("landing on a bad page", () => {
   expect(screen.queryByText("Recommended for you")).toBeNull();
 });
 
-test("if user gets authenticated", async () => {
-  render(
-    <MemoryRouter>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </MemoryRouter>
-  );
+describe("test if user can login", () => {
+  test("if user gets authenticated", async () => {
+    render(
+      <MemoryRouter>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </MemoryRouter>
+    );
 
-  const usernameInput = screen.getByPlaceholderText("Username");
-  const passwordInput = screen.getByPlaceholderText("Password");
-  const loginButton = screen.getByRole("button", { name: "Login" });
-  const user = userEvent.setup();
+    const usernameInput = screen.getByPlaceholderText("Username");
+    const passwordInput = screen.getByPlaceholderText("Password");
+    const loginButton = screen.getByRole("button", { name: "Login" });
+    const user = userEvent.setup();
 
-  await user.type(usernameInput, "sampleuser");
-  await user.type(passwordInput, "123");
+    await user.type(usernameInput, "sampleuser");
+    await user.type(passwordInput, "123");
 
-  expect(usernameInput.value).toBe("sampleuser");
-  expect(passwordInput.value).toBe("123");
+    expect(usernameInput.value).toBe("sampleuser");
+    expect(passwordInput.value).toBe("123");
 
-  await user.click(loginButton);
+    await user.click(loginButton);
 
-  waitFor(() => {
-    const loggedIn = screen.findByText("HOME");
-    expect(loggedIn).toBeInTheDocument();
+    waitFor(() => {
+      const loggedIn = screen.findByText("HOME");
+      expect(loggedIn).toBeInTheDocument();
+    });
+  });
+
+  test("If token is already set, user gets redirected to /", async () => {
+    render(
+      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+        <AuthContext.Provider value={{ user: { token: "sampletoken123" } }}>
+          <App />
+        </AuthContext.Provider>
+      </MemoryRouter>
+    );
+
+    const redirectedToHome = await screen.findByText("HOME");
+
+    expect(redirectedToHome).toBeInTheDocument();
   });
 });
 
-test("If token is already set, user gets redirected to /", async () => {
-  render(
-    <MemoryRouter initialEntries={["/awesomeMovi/"]}>
-      <AuthContext.Provider value={{ user: { token: "sampletoken123" } }}>
+/* describe("test if user can logout", () => {
+  // Waiting for logout button to be integrated.
+}); */
+
+describe("test if user can click movies and see movie details", () => {
+  test("Can user click on a movie and see the movie details", async () => {
+    render(
+      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
         <App />
-      </AuthContext.Provider>
-    </MemoryRouter>
-  );
+      </MemoryRouter>
+    );
 
-  const redirectedToHome = await screen.findByText("HOME");
+    const movie = await screen.findByText("Psycho");
+    userEvent.click(movie);
 
-  expect(redirectedToHome).toBeInTheDocument();
+    waitFor(() => {
+      const movieDetails = screen.findByText("Movie Details");
+      expect(movieDetails).toBeInTheDocument();
+    });
+  });
 });
