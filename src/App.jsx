@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Categories from "./pages/Categories";
 import PageLogin from "./pages/Login";
 import MovieDetailPage from "./pages/MovieDetail";
+
 function App() {
   return (
     <Routes>

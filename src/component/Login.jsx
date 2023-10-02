@@ -22,9 +22,9 @@ const Login = () => {
         (user) => user.username === username && user.password === password
       );
       if (user) {
+        setMessage("You are logged in!");
         const token = user.token;
         login(token);
-        setMessage("You are logged in!");
       } else {
         setMessage("Wrong username or password");
         throw new Error("Wrong username or password");
