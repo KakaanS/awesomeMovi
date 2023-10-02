@@ -1,14 +1,21 @@
 import Navbar from "../component/ui/Navbar";
+import TwoColumnLayout from './ui/TwoColumnLayout';
+import TitleLine from "./ui/TitleLine";
+import TextParagraph from "./ui/TextParagraph";
+
 const MovieDetail = ({ movie }) => {
   return (
     <div>
       <Navbar />
-      <h2>{movie.title}</h2>
-      <p>RATING: {movie.rating}</p>
-      <p>ACTORS: {movie.actors}</p>
-      <p>GENRE: {movie.genre}</p>
-      <p>SYNOPSIS: {movie.synopsis}</p>
-      <img src={movie.thumbnail} alt={movie.name} />
+      <TitleLine text={movie.title} />
+      <TwoColumnLayout imageSrc={movie.thumbnail} imageAlt={movie.name}>
+        <div>
+          <TextParagraph>RATING:</TextParagraph> {movie.rating}
+          <TextParagraph>ACTORS: </TextParagraph> {movie.actors}
+          <TextParagraph>GENRE: </TextParagraph>{movie.genre}
+          <TextParagraph>SYNOPSIS: </TextParagraph>{movie.synopsis}
+        </div>
+      </TwoColumnLayout>
     </div>
   );
 };
