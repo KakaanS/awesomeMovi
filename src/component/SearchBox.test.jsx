@@ -5,7 +5,7 @@ import SearchBox from './SearchBox';
 
 // test to see if input field renders
 
-test('det finns ett input-fält', () => {
+test('there is a input', () => {
   const { getByPlaceholderText } = render(<SearchBox />);
   const inputElement = getByPlaceholderText('Sök efter en filmtitel...');
   expect(inputElement).toBeInTheDocument();
@@ -13,7 +13,7 @@ test('det finns ett input-fält', () => {
 
 // test to see if it is possible to search for the movie "The Godfather"
 
-test('det går att söka efter en hel filmtitel', async () => {
+test('search for a movietitle', async () => {
   const { getByPlaceholderText, getByAltText } = render(<SearchBox />)
   const inputElement = getByPlaceholderText('Sök efter en filmtitel...')
 
@@ -28,7 +28,7 @@ test('det går att söka efter en hel filmtitel', async () => {
 
 // test to see if it is possible to search for all movies starting with "t"
 
-test('det går att söka på en boksav och få fram alla filmer som börjar med den bokstaven', async () => {
+test('searching for all movies that starts whit the letter "t"', async () => {
   const {getByPlaceholderText, getAllByText } = render(<SearchBox />)
   const inputElement = getByPlaceholderText('Sök efter en filmtitel...')
 

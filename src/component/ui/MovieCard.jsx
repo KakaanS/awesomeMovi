@@ -1,4 +1,5 @@
 import React from 'react';
+import BookMark from '../BookMark';
 
 const MovieCard = ({ movie }) => {
   const movieStyle = {
@@ -25,6 +26,7 @@ const MovieCard = ({ movie }) => {
     <div style={movieStyle}>
       <img src={movie.thumbnail} alt={movie.name} style={imageStyle} />
       <p style={movieTitleStyle}>{movie.title}</p>
+      <BookMark />
     </div>
   );
 };
