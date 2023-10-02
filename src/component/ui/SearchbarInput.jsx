@@ -1,4 +1,4 @@
-const SearchbarInput = ({ value, onChange }) => {
+const SearchbarInput = ({ value, onChange, placeholder, type}) => {
   const SearchbarContainerStyle = {
     display: 'flex',
     justifyContent: 'center', 
@@ -20,8 +20,8 @@ const SearchbarInput = ({ value, onChange }) => {
     <div style={SearchbarContainerStyle}>
       <input
         style={SearchbarStyle}
-        type="text"
-        placeholder="Search for a movie..."
+        type={type}
+        placeholder={placeholder}
         value={value}
         onChange={onChange}
       />
