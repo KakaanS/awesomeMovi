@@ -1,9 +1,9 @@
 import { test, expect } from "vitest";
-import { render } from '@testing-library/react'
+import { render } from "@testing-library/react";
 import TrendingMovies from "./TrendingMovies";
 
-
 //Checks if the page contains the text "Trending"
+
 
 test('Shows the text "Trending"', () => {
     render(<TrendingMovies />);
@@ -18,3 +18,4 @@ test('Shows list whit movies', () => {
     const movieList = container.querySelector('div'); 
     expect(movieList).toBeTruthy();
 });
+

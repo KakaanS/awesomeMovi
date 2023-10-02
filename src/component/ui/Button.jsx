@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Button = ({ text }) => {
   const buttonStyle = {
     backgroundColor: '#008E7E',
@@ -7,7 +5,7 @@ const Button = ({ text }) => {
     padding: '10px 20px',
     color: '#fff', 
     cursor: 'pointer', 
-    textTransform: 'uppercase', 
+    textTransform: 'uppercase',
   };
 
   return <button style={buttonStyle}>{text}</button>;

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SearchbarInput = ({ value, onChange }) => {
   const SearchbarContainerStyle = {
     display: 'flex',
