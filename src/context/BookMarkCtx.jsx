@@ -1,7 +1,8 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
 
 const BookmarkContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useBookmark() {
   return useContext(BookmarkContext);
 }
@@ -18,7 +19,9 @@ export function BookmarkProvider({ children }) {
 
   const removeFromBookmarks = (movie) => {
     setBookmarks((prevBookmarks) => {
-      const newBookmarks = prevBookmarks.filter((bookmark) => bookmark.id !== movie.id);
+      const newBookmarks = prevBookmarks.filter(
+        (bookmark) => bookmark.id !== movie.id
+      );
       return newBookmarks;
     });
   };

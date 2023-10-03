@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
+import { useAuth } from "../../context/AuthCtx";
 
 const Navbar = () => {
   const navbarStyle = {
@@ -31,6 +32,13 @@ const Navbar = () => {
     }
   };
 
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    window.location.reload();
+  };
+
   return (
     <nav style={navbarStyle}>
       <ul style={ulStyle}>
@@ -55,7 +63,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li style={liStyle}>
-          <Button text="Log Out" />
+          <Button text="Log Out" onClick={handleLogout} />
         </li>
       </ul>
     </nav>

@@ -24,8 +24,8 @@ describe("Basic login tests", () => {
 
   test("if user puts wrong password", async () => {
     customRender();
-    const usernameInput = screen.getByPlaceholderText("Username");
-    const passwordInput = screen.getByPlaceholderText("Password");
+    const usernameInput = screen.getByPlaceholderText("Username...");
+    const passwordInput = screen.getByPlaceholderText("Password...");
     const loginButton = screen.getByRole("button");
 
     await userEvent.type(usernameInput, "sampleuser");
