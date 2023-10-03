@@ -111,7 +111,6 @@ describe("testing site navigation", () => {
 
     const category = await screen.findByText("CATEGORY");
     userEvent.click(category);
-    screen.debug();
 
     const categoryPage = await screen.findByText("Action");
     expect(categoryPage).toBeInTheDocument();
