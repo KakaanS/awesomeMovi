@@ -1,30 +1,43 @@
-const SearchbarInput = ({ value, onChange }) => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+const SearchbarInput = ({ value, onChange, placeholder, type }) => {
   const SearchbarContainerStyle = {
     display: 'flex',
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    height: '100px', 
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100px',
   };
 
   const SearchbarStyle = {
     padding: '15px',
     textAlign: 'left',
     backgroundColor: 'white',
-    width: '40%',
     borderRadius: '50px',
+    width: '40%',
     outline: 'none',
-    border: 'none',
+    border: 'none', 
+  };
+
+  const iconStyle = {
+    color: '#000000',
   };
 
   return (
     <div style={SearchbarContainerStyle}>
-      <input
-        style={SearchbarStyle}
-        type="text"
-        placeholder="Search for a movie..."
-        value={value}
-        onChange={onChange}
-      />
+      <div style={SearchbarStyle}>
+        <FontAwesomeIcon icon={faSearch} style={iconStyle} />
+        <input
+          style={{
+            border: 'none',
+            paddingLeft: '10px',
+            outline: 'none',
+          }}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+      </div>
     </div>
   );
 };

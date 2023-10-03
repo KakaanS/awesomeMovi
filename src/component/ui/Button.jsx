@@ -1,14 +1,15 @@
-const Button = ({ text }) => {
+const Button = ({ text, onClick, style }) => {
   const buttonStyle = {
     backgroundColor: '#008E7E',
     borderRadius: '20px',
-    padding: '10px 20px',
-    color: '#fff', 
-    cursor: 'pointer', 
+    padding: '8px 20px',
+    color: '#fff',
+    cursor: 'pointer',
     textTransform: 'uppercase',
+    ...style, 
   };
 
-  return <button style={buttonStyle}>{text}</button>;
+  return <button style={buttonStyle} onClick={onClick}>{text}</button>;
 };
 
 export default Button;

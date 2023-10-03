@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import movieData from "../data/movies.json";
 import Category from "../component/Category";
 import MovieCard from "../component/ui/MovieCard";
+import Title from "../component/ui/Title";
+import Button from "../component/ui/Button";
 import Navbar from "../component/ui/Navbar";
-
+import ButtonFilter from "../component/ui/ButtonFilter";
 /**
  * Renders Alist of categories and movies. Allows user to select a category to view its movies
  *
  */
-
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -40,15 +41,21 @@ const Categories = () => {
   return (
     <div>
       <Navbar />
-      <h2>Categories</h2>
-      <button onClick={handleShowAllMovies}>All movies</button>
-      <ul>
+      <Title text="Categories" />
+      <Button
+        onClick={handleShowAllMovies}
+        text="All movies"
+        style={{ margin: "20px" }}
+      />
+      <ul style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}>
         {categories.map((category, index) => (
-          <li key={index}>
-            <button onClick={() => handleCategoryClick(category)}>
-              {category}
-            </button>
-          </li>
+          <div key={index} style={{ flexBasis: "10%", margin: "5px" }}>
+            <ButtonFilter
+              onClick={() => handleCategoryClick(category)}
+              text={category}
+              style={{ width: "100%" }}
+            />
+          </div>
         ))}
       </ul>
       {selectedCategory && <Category category={selectedCategory} />}

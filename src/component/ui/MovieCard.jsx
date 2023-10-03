@@ -1,10 +1,11 @@
-import React from 'react';
-import BookMark from '../BookMark';
+import  { useState } from 'react';
 import defaultImage from '../../noimage.png';
+import BookMark from '../BookMarkButton';
 
 
 const MovieCard = ({ movie }) => {
   const movieStyle = {
+    position: 'relative', 
     display: 'inline-block',
     margin: '15px',
     verticalAlign: 'top',
@@ -14,7 +15,7 @@ const MovieCard = ({ movie }) => {
   };
 
   const imageStyle = {
-    width: '222px'
+    width: '222px',
   };
 
   const movieTitleStyle = {
@@ -24,8 +25,20 @@ const MovieCard = ({ movie }) => {
     maxWidth: `${imageStyle.width}`,
   };
 
+  const bookmarkStyle = {
+    position: 'absolute', 
+    top: '0px', 
+    right: '10px',
+  };
+
   const handleImageError = (e) => {
     e.target.src = defaultImage;
+  };
+
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
+  const toggleBookmark = () => {
+    setIsBookmarked((prevIsBookmarked) => !prevIsBookmarked);
   };
 
   return (
@@ -37,7 +50,10 @@ const MovieCard = ({ movie }) => {
         onError={handleImageError}
       />
       <p style={movieTitleStyle}>{movie.title}</p>
-      <BookMark />
+      <div style={bookmarkStyle}>
+        <BookMark onClick={toggleBookmark} isBookmarked={isBookmarked} />
+      </div>
+      <BookMark movie={movie} />
     </div>
   );
 };
