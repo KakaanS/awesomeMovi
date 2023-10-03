@@ -3,7 +3,11 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext({
+  user: null,
+  login: () => {},
+  logout: () => {},
+});
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {

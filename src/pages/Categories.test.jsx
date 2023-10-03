@@ -15,7 +15,8 @@ beforeEach(() => {
 });
 
 // Test checks that the heading is displayed
-test("should display the heading 'Categories'", () => {
+test.only("should display the heading 'Categories'", () => {
+  screen.debug();
   expect(screen.getByText("Categories")).toBeInTheDocument();
 });
 

@@ -3,7 +3,7 @@ import { useBookmark } from "../context/BookMarkCtx.jsx";
 const BookMark = ({ movie }) => {
   const { addToBookmarks, removeFromBookmarks, bookmarks } = useBookmark();
 
-  const isBookmarked = bookmarks.some((bookmark) => bookmark.id === movie.id);
+  const isBookmarked = bookmarks?.some((bookmark) => bookmark.id === movie.id);
 
   const toggleBookmark = () => {
     if (isBookmarked) {

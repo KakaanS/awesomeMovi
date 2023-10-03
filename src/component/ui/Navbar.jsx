@@ -3,6 +3,8 @@ import Button from "./Button";
 import { useAuth } from "../../context/AuthCtx";
 
 const Navbar = () => {
+  const { logout } = useAuth();
+
   const navbarStyle = {
     padding: "10px 0",
   };
@@ -26,13 +28,10 @@ const Navbar = () => {
   };
 
   const handleHomeClick = () => {
-    console.log("clicked");
     if (location.pathname === "/awesomeMovi/") {
       window.location.reload();
     }
   };
-
-  const { logout } = useAuth();
 
   const handleLogout = () => {
     logout();

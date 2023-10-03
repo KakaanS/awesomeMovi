@@ -1,6 +1,10 @@
 import { createContext, useContext, useState } from "react";
 
-const BookmarkContext = createContext();
+const BookmarkContext = createContext({
+  bookmarks: [],
+  addToBookmarks: () => {},
+  removeFromBookmarks: () => {},
+});
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useBookmark() {
