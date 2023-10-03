@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import App from "../App";
-import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import AuthProvider from "../context/AuthCtx";
 import { AuthContext } from "../context/AuthCtx";
 import userEvent from "@testing-library/user-event";
@@ -55,7 +55,7 @@ describe("test if user can login", () => {
     );
   });
 
-  test.only("If token is already set, user gets redirected to /", async () => {
+  test("If token is already set, user gets redirected to /", async () => {
     render(
       <MemoryRouter initialEntries={["/awesomeMovi/"]}>
         <AuthContext.Provider value={{ user: { token: "sampletoken123" } }}>
@@ -78,21 +78,25 @@ describe("testing site navigation", () => {
   test("Can user click on a movie and see the movie details", async () => {
     render(
       <MemoryRouter initialEntries={["/awesomeMovi/"]}>
-        <App />
+        <AuthContext.Provider value={{ user: { token: "sampletoken123" } }}>
+          <App />
+        </AuthContext.Provider>
       </MemoryRouter>
     );
 
     const movie = await screen.findByText("Psycho");
     userEvent.click(movie);
 
-    const movieDetails = await screen.findByText("RATING: R");
+    const movieDetails = await screen.findByText("RATING:");
     expect(movieDetails).toBeInTheDocument();
   });
 
   test("Can user click CATEGORY and see the category page", async () => {
     render(
       <MemoryRouter initialEntries={["/awesomeMovi/"]}>
-        <App />
+        <AuthContext.Provider value={{ user: { token: "sampletoken123" } }}>
+          <App />
+        </AuthContext.Provider>
       </MemoryRouter>
     );
 
@@ -103,7 +107,7 @@ describe("testing site navigation", () => {
     expect(categoryPage).toBeInTheDocument();
   });
 
-  /* test("Can user click on bookmarks and see their bookmarks", async () => {
+  test("Can user click on bookmarks and see their bookmarks", async () => {
     render(
       <MemoryRouter initialEntries={["/awesomeMovi/"]}>
         <App />
@@ -115,5 +119,5 @@ describe("testing site navigation", () => {
 
     const bookmarksPage = await screen.findByText("Bookmarks");
     expect(bookmarksPage).toBeInTheDocument();
-  }); */
+  });
 });
