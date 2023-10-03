@@ -29,6 +29,7 @@ test("should display 'Action', 'Drama', and 'Thriller'", () => {
 // Test verifies that all the categories are rendered
 test("should display all 15 category titles", () => {
   const categoriesList = screen.getAllByRole("listitem");
+  screen.debug(categoriesList);
   expect(categoriesList.length).toBe(15);
 });
 
@@ -39,7 +40,9 @@ test("should display all movies when 'All movies' button is clicked", async () =
 
   const user = userEvent.setup();
 
-  const horrorButton = within(categoriesList).getByRole("button", { name: "Horror" });
+  const horrorButton = within(categoriesList).getByRole("button", {
+    name: "Horror",
+  });
   await user.click(horrorButton);
 
   await user.click(allMoviesButton);
@@ -52,8 +55,12 @@ test("should display all movies when 'All movies' button is clicked", async () =
 test("should display movies of specific category", async () => {
   const categoriesList = screen.getByRole("list");
 
-  const horrorButton = within(categoriesList).getByRole("button", { name: "Horror" });
-  const historyButton = within(categoriesList).getByRole("button", { name: "History",});
+  const horrorButton = within(categoriesList).getByRole("button", {
+    name: "Horror",
+  });
+  const historyButton = within(categoriesList).getByRole("button", {
+    name: "History",
+  });
 
   const user = userEvent.setup();
   await user.click(horrorButton);
@@ -61,6 +68,6 @@ test("should display movies of specific category", async () => {
   expect(screen.getByText("Psycho")).toBeInTheDocument();
   expect(screen.queryByText("Schindler's List")).toBeNull();
 
-  await user.click(historyButton)
+  await user.click(historyButton);
   expect(screen.getByText("Schindler's List")).toBeInTheDocument();
 });
