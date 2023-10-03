@@ -8,7 +8,7 @@ import Navbar from "../component/ui/Navbar";
 import ButtonFilter from "../component/ui/ButtonFilter";
 /**
  * Renders Alist of categories and movies. Allows user to select a category to view its movies
- * 
+ *
  */
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -34,19 +34,27 @@ const Categories = () => {
   };
   // Shows all movies from the data
   const handleShowAllMovies = () => {
-    setShowAllMovies(true)
-    setSelectedCategory(null)
-  }
+    setShowAllMovies(true);
+    setSelectedCategory(null);
+  };
 
   return (
     <div>
       <Navbar />
       <Title text="Categories" />
-      <Button onClick={handleShowAllMovies} text="All movies" style={{ margin: '20px' }} />
-      <ul style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'left' }}>
+      <Button
+        onClick={handleShowAllMovies}
+        text="All movies"
+        style={{ margin: "20px" }}
+      />
+      <ul style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}>
         {categories.map((category, index) => (
-          <div key={index} style={{ flexBasis: '10%', margin: '5px' }}>
-            <ButtonFilter onClick={() => handleCategoryClick(category)} text={category} style={{ width: '100%' }} />
+          <div key={index} style={{ flexBasis: "10%", margin: "5px" }}>
+            <ButtonFilter
+              onClick={() => handleCategoryClick(category)}
+              text={category}
+              style={{ width: "100%" }}
+            />
           </div>
         ))}
       </ul>
