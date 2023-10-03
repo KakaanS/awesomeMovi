@@ -1,6 +1,7 @@
 import  { useState } from 'react';
-import BookMark from '../BookMark';
 import defaultImage from '../../noimage.png';
+import BookMark from '../BookMarkButton';
+
 
 const MovieCard = ({ movie }) => {
   const movieStyle = {
@@ -52,6 +53,7 @@ const MovieCard = ({ movie }) => {
       <div style={bookmarkStyle}>
         <BookMark onClick={toggleBookmark} isBookmarked={isBookmarked} />
       </div>
+      <BookMark movie={movie} />
     </div>
   );
 };
