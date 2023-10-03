@@ -3,7 +3,11 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const LOCAL_STORAGE_KEY = 'bookmarks'; // Använd en nyckel för Local Storage
 
 
-const BookmarkContext = createContext();
+const BookmarkContext = createContext({
+  bookmarks: [],
+  addToBookmarks: () => {},
+  removeFromBookmarks: () => {},
+});
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useBookmark() {

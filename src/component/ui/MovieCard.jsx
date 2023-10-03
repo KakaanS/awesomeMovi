@@ -1,4 +1,3 @@
-import  { useState } from 'react';
 import defaultImage from '../../noimage.png';
 import BookMark from '../BookMarkButton';
 import { Link } from "react-router-dom";
@@ -20,13 +19,13 @@ const MovieCard = ({ movie }) => {
   };
 
   const imageStyle = {
-    width: '222px',
+    width: "222px",
   };
 
   const movieTitleStyle = {
-    width: '100%',
-    wordWrap: 'break-word',
-    fontSize: '14px',
+    width: "100%",
+    wordWrap: "break-word",
+    fontSize: "14px",
     maxWidth: `${imageStyle.width}`,
   };
 

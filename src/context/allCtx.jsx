@@ -5,8 +5,11 @@ import { BookmarkProvider } from "./BookMarkCtx";
 
 // eslint-disable-next-line react/prop-types
 const AllCtx = ({ children }) => {
-  return <AuthProvider><BookmarkProvider>{children}</BookmarkProvider> </AuthProvider>;
-  
+  return (
+    <AuthProvider>
+      <BookmarkProvider>{children}</BookmarkProvider>
+    </AuthProvider>
+  );
 };
 
 export default AllCtx;
