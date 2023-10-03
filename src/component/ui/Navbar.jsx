@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
 const Navbar = () => {
   const navbarStyle = {
@@ -52,6 +53,9 @@ const Navbar = () => {
           <Link to="" style={linkStyle} className="link">
             BOOKMARKS
           </Link>
+        </li>
+        <li style={liStyle}>
+          <Button text="Log Out" />
         </li>
       </ul>
     </nav>
