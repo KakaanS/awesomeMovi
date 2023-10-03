@@ -58,7 +58,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li style={liStyle}>
-          <Link to="" style={linkStyle} className="link">
+          <Link to="/awesomeMovi/bookmark" style={linkStyle} className="link">
             BOOKMARKS
           </Link>
         </li>

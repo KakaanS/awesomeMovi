@@ -1,4 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from 'react';
+
+const LOCAL_STORAGE_KEY = 'bookmarks'; // Använd en nyckel för Local Storage
+
 
 const BookmarkContext = createContext();
 
@@ -9,6 +12,17 @@ export function useBookmark() {
 
 export function BookmarkProvider({ children }) {
   const [bookmarks, setBookmarks] = useState([]);
+
+  // Ladda bokmärken från Local Storage när komponenten monteras
+  useEffect(() => {
+    const storedBookmarks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+    setBookmarks(storedBookmarks);
+  }, []);
+
+  // Spara bokmärken i Local Storage varje gång de ändras
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(bookmarks));
+  }, [bookmarks]);
 
   const addToBookmarks = (movie) => {
     setBookmarks((prevBookmarks) => {
@@ -34,3 +48,4 @@ export function BookmarkProvider({ children }) {
     </BookmarkContext.Provider>
   );
 }
+
