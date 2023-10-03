@@ -5,37 +5,31 @@ import SearchBox from "./SearchBox";
 
 // test to see if input field renders
 
-
-test('there is a input', () => {
-
+test("there is a input", () => {
   const { getByPlaceholderText } = render(<SearchBox />);
-  const inputElement = getByPlaceholderText("Sök efter en filmtitel...");
+  const inputElement = getByPlaceholderText("Search for a movie...");
   expect(inputElement).toBeInTheDocument();
 });
 
 // test to see if it is possible to search for the movie "The Godfather"
 
-
-test('search for a movietitle', async () => {
-  const { getByPlaceholderText, getByAltText } = render(<SearchBox />)
-  const inputElement = getByPlaceholderText('Sök efter en filmtitel...')
-
+test("search for a movietitle", async () => {
+  const { getByPlaceholderText, getByText } = render(<SearchBox />);
+  const inputElement = getByPlaceholderText("Search for a movie...");
 
   userEvent.type(inputElement, "The Godfather");
 
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const godfatherImage = getByAltText("The Godfather");
+  const godfatherImage = getByText("The Godfather");
   expect(godfatherImage).toBeInTheDocument();
 });
 
 // test to see if it is possible to search for all movies starting with "t"
 
-
 test('searching for all movies that starts whit the letter "t"', async () => {
-  const {getByPlaceholderText, getAllByText } = render(<SearchBox />)
-  const inputElement = getByPlaceholderText('Sök efter en filmtitel...')
-
+  const { getByPlaceholderText, getAllByText } = render(<SearchBox />);
+  const inputElement = getByPlaceholderText("Search for a movie...");
 
   userEvent.type(inputElement, "t");
 
