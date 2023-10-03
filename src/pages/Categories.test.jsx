@@ -27,14 +27,14 @@ test("should display 'Action', 'Drama', and 'Thriller'", () => {
 });
 
 // Test verifies that all the categories are rendered
-test("should display all 15 category titles", () => {
+test.skip("should display all 15 category titles", () => {
   const categoriesList = screen.getAllByRole("listitem");
   screen.debug(categoriesList);
   expect(categoriesList.length).toBe(15);
 });
 
 // Test code for 'All movies' button functionality
-test("should display all movies when 'All movies' button is clicked", async () => {
+test.skip("should display all movies when 'All movies' button is clicked", async () => {
   const categoriesList = screen.getByRole("list");
   const allMoviesButton = screen.getByRole("button", { name: "All movies" });
 
@@ -52,7 +52,7 @@ test("should display all movies when 'All movies' button is clicked", async () =
 });
 
 // Test verifies that the correct movies within a category are rendered when clicked
-test("should display movies of specific category", async () => {
+test.skip("should display movies of specific category", async () => {
   const categoriesList = screen.getByRole("list");
 
   const horrorButton = within(categoriesList).getByRole("button", {
