@@ -8,11 +8,11 @@ const SearchBox = ({setSearchResults, searchText, setSearchText}) => {
   // filters the list of movies depending on letters / names
 
   useEffect(() => {
-    if (searchText.trim() === "") {
+    if (searchText?.trim() === "") {
       setSearchResults([]);
     } else {
       const filteredMovies = movieData.filter((movie) =>
-        movie.title.toLowerCase().startsWith(searchText.toLowerCase()) || movie.title.toLowerCase().includes(searchText.toLowerCase())
+        movie.title.toLowerCase().startsWith(searchText?.toLowerCase()) || movie.title.toLowerCase().includes(searchText?.toLowerCase())
       );
       setSearchResults(filteredMovies);
     }
