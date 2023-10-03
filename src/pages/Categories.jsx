@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import movieData from "../data/movies.json";
 import Category from "../component/Category";
 import MovieCard from "../component/ui/MovieCard";
+import Navbar from "../component/ui/Navbar";
 
 /**
  * Renders Alist of categories and movies. Allows user to select a category to view its movies
- * 
+ *
  */
-
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -33,20 +33,23 @@ const Categories = () => {
   };
   // Shows all movies from the data
   const handleShowAllMovies = () => {
-   setShowAllMovies(true)
-   setSelectedCategory(null)
-  }
+    setShowAllMovies(true);
+    setSelectedCategory(null);
+  };
 
   return (
     <div>
+      <Navbar />
       <h2>Categories</h2>
       <button onClick={handleShowAllMovies}>All movies</button>
       <ul>
-      {categories.map((category, index) => (
-        <li key={index}>
-          <button onClick={() => handleCategoryClick(category)}>{category}</button>
-        </li>
-      ))}
+        {categories.map((category, index) => (
+          <li key={index}>
+            <button onClick={() => handleCategoryClick(category)}>
+              {category}
+            </button>
+          </li>
+        ))}
       </ul>
       {selectedCategory && <Category category={selectedCategory} />}
       {showAllMovies &&
