@@ -4,8 +4,6 @@ import { useBookmark } from '../context/BookMarkCtx';
 const BookMarks = ( ) => {
   const { bookmarks } = useBookmark(); // Hämta bokmärkta filmer från kontexten
 
-  console.log('Bookmarks:', bookmarks);
-
   return (
     <div>
       <h1>Bookmarks</h1>
