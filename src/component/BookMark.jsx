@@ -1,7 +1,9 @@
+import ButtonBookmark from "./ui/ButtonBookmark"
+
 const BookMark = () =>  {
     
     return (
-        <button> + </button>
+        <ButtonBookmark text='+' />
     )
 }
 

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom"; 
 import dataBase from '../data/movies.json'
 import TitleLine from './ui/TitleLine';
 import MovieCard from './ui/MovieCard';
