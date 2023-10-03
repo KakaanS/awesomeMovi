@@ -7,12 +7,14 @@ import MovieCard from "../component/ui/MovieCard";
 
 const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
+    const [searchText, setSearchText] = useState("");
+
 
   return (
     <div>
       <Navbar />
-      <SearchBox setSearchResults={setSearchResults} />
-      {searchResults.length > 0 ? (
+      <SearchBox setSearchResults={setSearchResults} searchText={searchText} setSearchText={setSearchText} />
+      {searchResults.length > 0 || searchText ? (
         <div>
           {searchResults.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />

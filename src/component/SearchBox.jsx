@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import movieData from "../data/movies.json";
 import SearchbarInput from "./ui/SearchbarInput";
 
 
-const SearchBox = ({setSearchResults}) => {
-  const [searchText, setSearchText] = useState("");
+const SearchBox = ({setSearchResults, searchText, setSearchText}) => {
 
   // filters the list of movies depending on letters / names
 
