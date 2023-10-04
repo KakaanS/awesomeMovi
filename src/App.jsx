@@ -9,11 +9,11 @@ import BookMarks from "./pages/BookMarks";
 function App() {
   return (
     <Routes>
-      <Route path="/awesomeMovi/login" element={<PageLogin />} />
+      <Route path="/login" element={<PageLogin />} />
       <Route path="/movie/:id" element={<MovieDetailPage />} />
-      <Route path="/awesomeMovi/" element={<Home />} />
-      <Route path="/awesomeMovi/categories" element={<Categories />} />
-      <Route path="/awesomeMovi/bookmark" element={<BookMarks />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/categories" element={<Categories />} />
+      <Route path="/bookmark" element={<BookMarks />} />
     </Routes>
   );
 }

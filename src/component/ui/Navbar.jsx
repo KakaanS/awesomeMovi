@@ -28,7 +28,7 @@ const Navbar = () => {
   };
 
   const handleHomeClick = () => {
-    if (location.pathname === "/awesomeMovi/") {
+    if (location.pathname === "/") {
       window.location.reload();
     }
   };
@@ -43,7 +43,7 @@ const Navbar = () => {
       <ul style={ulStyle}>
         <li style={liStyle}>
           <Link
-            to="/awesomeMovi/"
+            to="/"
             style={linkStyle}
             className="link"
             onClick={handleHomeClick}
@@ -52,12 +52,12 @@ const Navbar = () => {
           </Link>
         </li>
         <li style={liStyle}>
-          <Link to="/awesomeMovi/categories" style={linkStyle} className="link">
+          <Link to="/categories" style={linkStyle} className="link">
             CATEGORY
           </Link>
         </li>
         <li style={liStyle}>
-          <Link to="/awesomeMovi/bookmark" style={linkStyle} className="link">
+          <Link to="/bookmark" style={linkStyle} className="link">
             BOOKMARKS
           </Link>
         </li>

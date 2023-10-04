@@ -6,7 +6,7 @@ import userEvent from "@testing-library/user-event";
 
 // Set up recurrent rendering configuration for testing the 'Categories' component
 beforeEach(() => {
-  const route = "/awesomeMovi/categories";
+  const route = "/categories";
   render(
     <MemoryRouter initialEntries={[route]}>
       <Categories />
