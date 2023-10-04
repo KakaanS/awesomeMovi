@@ -1,0 +1,16 @@
+.LoginInputContainerStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    margin-bottom: 15px;
+}
+
+.LoginInputStyle {
+    padding: 15px;
+    text-align: left;
+    background-color: white;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+}

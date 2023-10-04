@@ -1,0 +1,8 @@
+.buttonBookmarkStyle {
+    background-color: #008e7e;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 0px;
+    padding: 7px;
+}

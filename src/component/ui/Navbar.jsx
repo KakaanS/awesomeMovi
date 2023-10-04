@@ -1,31 +1,10 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import { useAuth } from "../../context/AuthCtx";
+import "../../mobilecss/navbar.css";
 
 const Navbar = () => {
   const { logout } = useAuth();
-
-  const navbarStyle = {
-    padding: "10px 0",
-  };
-
-  const ulStyle = {
-    listStyle: "none",
-    display: "flex",
-    justifyContent: "center",
-  };
-
-  const liStyle = {
-    margin: "0 20px",
-  };
-
-  const linkStyle = {
-    textTransform: "uppercase",
-    color: "#fff",
-    fontWeight: 800,
-    textDecoration: "none",
-    transition: "color 0.3s",
-  };
 
   const handleHomeClick = () => {
     if (location.pathname === "/awesomeMovi/") {
@@ -39,29 +18,28 @@ const Navbar = () => {
   };
 
   return (
-    <nav style={navbarStyle}>
-      <ul style={ulStyle}>
-        <li style={liStyle}>
+    <nav className="navbarStyle">
+      <ul className="ulStyle">
+        <li className="liStyle">
           <Link
             to="/awesomeMovi/"
-            style={linkStyle}
-            className="link"
+            className="linkStyle" 
             onClick={handleHomeClick}
           >
             HOME
           </Link>
         </li>
-        <li style={liStyle}>
-          <Link to="/awesomeMovi/categories" style={linkStyle} className="link">
-            CATEGORY
+        <li className="liStyle">
+          <Link to="/awesomeMovi/categories" className="linkStyle">
+           CATEGORY
           </Link>
         </li>
-        <li style={liStyle}>
-          <Link to="/awesomeMovi/bookmark" style={linkStyle} className="link">
+        <li className="liStyle">
+          <Link to="/awesomeMovi/bookmark" className="linkStyle">
             BOOKMARKS
           </Link>
         </li>
-        <li style={liStyle}>
+        <li className="liStyle">
           <Button text="Log Out" onClick={handleLogout} />
         </li>
       </ul>

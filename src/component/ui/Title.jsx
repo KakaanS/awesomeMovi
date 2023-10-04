@@ -1,17 +1,7 @@
-const Title = ({ text }) => {
-    const TitleStyle = {
-        padding: '10px 10px',
-        color: '#fff',
-        textTransform: 'uppercase',
-        textAlign: 'left',
-        position: 'relative',
-    };
+import "../../mobilecss/title.css";
 
-    return (
-        <h2 style={TitleStyle}>
-            {text}
-        </h2>
-    );
+const Title = ({ text }) => {
+  return <h2 className="Title">{text}</h2>;
 };
 
 export default Title;

@@ -1,29 +1,12 @@
+import "../../mobilecss/two-columns.css"; 
+
 const TwoColumnLayout = ({ children, imageSrc, imageAlt }) => {
-    const containerStyle = {
-        display: 'flex',
-        padding: '20px',
-        justifyContent: 'space-between'
-    };
-
-    const textContainerStyle = {
-        flex: '1',
-        maxWidth: '50%',
-    };
-
-    const imageStyle = {
-        flex: '1',
-        maxWidth: '25%',
-        paddingRight: '10%',
-    };
-
-    return (
-        <div style={containerStyle}>
-            <div style={textContainerStyle}>
-                {children}
-            </div>
-            <img src={imageSrc} alt={imageAlt} style={imageStyle} />
-        </div>
-    );
+  return (
+    <div className="TwoColumnLayout">
+      <div className="TextContainer">{children}</div>
+      <img className="Image" src={imageSrc} alt={imageAlt} />
+    </div>
+  );
 };
 
 export default TwoColumnLayout;
