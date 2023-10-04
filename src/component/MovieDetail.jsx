@@ -10,8 +10,8 @@ const MovieDetail = ({ movie }) => {
       <TitleLine text={movie.title} />
       <TwoColumnLayout imageSrc={movie.thumbnail} imageAlt={movie.name}>
         <div>
-          <TextParagraph>RATING:</TextParagraph> {movie.rating}
-          <TextParagraph>ACTORS: </TextParagraph> {movie.actors}
+          <TextParagraph>RATING:</TextParagraph>{movie.rating}
+          <TextParagraph>ACTORS: </TextParagraph>{movie.actors}
           <TextParagraph>GENRE: </TextParagraph>{movie.genre}
           <TextParagraph>SYNOPSIS: </TextParagraph>{movie.synopsis}
         </div>
