@@ -34,6 +34,7 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
+    console.log("logout");
     logout();
     window.location.reload();
   };

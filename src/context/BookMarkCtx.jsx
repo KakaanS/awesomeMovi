@@ -1,7 +1,6 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from "react";
 
-const LOCAL_STORAGE_KEY = 'bookmarks'; // Using key for Local storage
-
+const LOCAL_STORAGE_KEY = "bookmarks"; // Using a key for localStorage
 
 const BookmarkContext = createContext({
   bookmarks: [],
@@ -17,9 +16,10 @@ export function useBookmark() {
 export function BookmarkProvider({ children }) {
   const [bookmarks, setBookmarks] = useState([]);
 
-  // Load bookmarks from Local Storage 
+  // Load bookmarks from Local Storage
   useEffect(() => {
-    const storedBookmarks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+    const storedBookmarks =
+      JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
     setBookmarks(storedBookmarks);
   }, []);
 
@@ -52,4 +52,3 @@ export function BookmarkProvider({ children }) {
     </BookmarkContext.Provider>
   );
 }
-
