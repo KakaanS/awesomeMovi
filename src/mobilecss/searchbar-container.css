@@ -1,0 +1,23 @@
+ .searchbarContainerStyle {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 6rem;
+     width: 100%;
+ }
+
+ .searchbarStyle {
+     padding: 15;
+     text-align: left;
+     background-color: white;
+     border-radius: 50px;
+     width: 40%;
+     outline: none;
+     border: none;
+ }
+
+ .iconStyle {
+     color: white;
+ }
+
+ ;

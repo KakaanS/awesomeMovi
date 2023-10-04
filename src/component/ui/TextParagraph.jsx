@@ -1,9 +1,7 @@
-const TextParagraph = ({ children }) => {
-    const paragraphStyle = {
-        color: '#008E7E',
-    };
+import "../../mobilecss/text-paragraph.css";
 
-    return <p style={paragraphStyle}>{children}</p>;
+const TextParagraph = ({ children }) => {
+  return <p className="TextParagraph">{children}</p>;
 };
 
 export default TextParagraph;

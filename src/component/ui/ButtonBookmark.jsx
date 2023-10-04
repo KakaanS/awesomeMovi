@@ -1,15 +1,8 @@
-const ButtonBookmark = ({ children, onClick }) => {
-  const buttonBookmarkStyle = {
-    backgroundColor: "#008E7E",
-    color: "#fff",
-    cursor: "pointer",
-    textTransform: "uppercase",
-    borderRadius: "0px",
-    padding: "7px",
-  };
+import "../../mobilecss/button-bookmark.css";
 
+const ButtonBookmark = ({ children, onClick }) => {
   return (
-    <button style={buttonBookmarkStyle} onClick={onClick}>
+    <button className="buttonBookmarkStyle" onClick={onClick}>
       {children}
     </button>
   );
