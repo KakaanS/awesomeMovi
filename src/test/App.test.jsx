@@ -114,8 +114,9 @@ describe("testing site navigation", () => {
       </MemoryRouter>
     );
 
-    const bookmarks = await screen.findByText("BOOKMARKS");
-    userEvent.click(bookmarks);
+    const bookmarks = await screen.findByText("BOOKMARKs");
+    console.log(bookmarks);
+    await userEvent.click(bookmarks);
 
     const bookmarksPage = await screen.findByText("Bookmarks");
     expect(bookmarksPage).toBeInTheDocument();
