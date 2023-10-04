@@ -49,6 +49,8 @@ const MovieCard = ({ movie }) => {
           onError={handleImageError}
         />
         <p style={movieTitleStyle}>{movie.title}</p>
+        <p>{movie.year}</p>
+        <p>{movie.rating}</p>
       </Link>
       <div style={bookmarkStyle}>
         <BookMark movie={movie} onClick={handleBookmarkClick} />
