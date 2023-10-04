@@ -23,7 +23,7 @@ const Navbar = () => {
       <ul className="ulStyle">
         <li className="liStyle">
           <Link
-            to="/awesomeMovi/"
+            to="/"
             className="linkStyle"
             onClick={handleHomeClick}
           >
@@ -31,12 +31,12 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="liStyle">
-          <Link to="/awesomeMovi/categories" className="linkStyle">
+          <Link to="/categories" className="linkStyle">
             CATEGORY
           </Link>
         </li>
         <li className="liStyle">
-          <Link to="/awesomeMovi/bookmark" className="linkStyle">
+          <Link to="/bookmark" className="linkStyle">
             BOOKMARKS
           </Link>
         </li>
