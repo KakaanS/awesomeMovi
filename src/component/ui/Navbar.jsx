@@ -23,7 +23,7 @@ const Navbar = () => {
         <li className="liStyle">
           <Link
             to="/awesomeMovi/"
-            className="linkStyle" 
+            className="linkStyle"
             onClick={handleHomeClick}
           >
             HOME
@@ -31,7 +31,7 @@ const Navbar = () => {
         </li>
         <li className="liStyle">
           <Link to="/awesomeMovi/categories" className="linkStyle">
-           CATEGORY
+            CATEGORY
           </Link>
         </li>
         <li className="liStyle">
@@ -46,5 +46,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;
