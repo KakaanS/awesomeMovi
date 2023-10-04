@@ -1,21 +1,20 @@
-import defaultImage from '../../noimage.png';
-import BookMark from '../BookMarkButton';
+import defaultImage from "../../noimage.png";
+import BookMark from "../BookMarkButton";
 import { Link } from "react-router-dom";
-
 
 const MovieCard = ({ movie }) => {
   const handleBookmarkClick = (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
   };
 
   const movieStyle = {
-    position: 'relative',
-    display: 'inline-block',
-    margin: '15px',
-    verticalAlign: 'top',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'left',
+    position: "relative",
+    display: "inline-block",
+    margin: "15px",
+    verticalAlign: "top",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "left",
   };
 
   const imageStyle = {
@@ -30,9 +29,9 @@ const MovieCard = ({ movie }) => {
   };
 
   const bookmarkStyle = {
-    position: 'absolute',
-    top: '0px',
-    right: '10px',
+    position: "absolute",
+    top: "0px",
+    right: "10px",
   };
 
   const handleImageError = (e) => {
@@ -40,7 +39,7 @@ const MovieCard = ({ movie }) => {
   };
 
   return (
-    <div style={movieStyle}>
+    <div data-testid="movieCard" style={movieStyle}>
       <Link to={`/movie/${movie.id}`}>
         <img
           src={movie.thumbnail || defaultImage}
@@ -58,5 +57,3 @@ const MovieCard = ({ movie }) => {
 };
 
 export default MovieCard;
-
-

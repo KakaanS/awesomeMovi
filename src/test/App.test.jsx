@@ -1,11 +1,15 @@
+// Tools
 import { describe, expect, test } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
-import App from "../App";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
+
+// Content to be tested
+import App from "../App";
+import PageLogin from "../pages/Login";
 import AuthProvider from "../context/AuthCtx";
 import { AuthContext } from "../context/AuthCtx";
-import userEvent from "@testing-library/user-event";
-import PageLogin from "../pages/Login";
+import { BookmarkProvider } from "../context/BookMarkCtx";
 
 test("should always pass", () => {
   render(
@@ -114,11 +118,90 @@ describe("testing site navigation", () => {
       </MemoryRouter>
     );
 
-    const bookmarks = await screen.findByText("BOOKMARKs");
-    console.log(bookmarks);
+    const bookmarks = await screen.findByText("BOOKMARKS");
     await userEvent.click(bookmarks);
 
-    const bookmarksPage = await screen.findByText("Bookmarks");
+    const bookmarksPage = await screen.findByText("Your Bookmarks");
     expect(bookmarksPage).toBeInTheDocument();
+  });
+
+  test("Can user navigate from bookmarks to Home", async () => {
+    render(
+      <MemoryRouter initialEntries={["/awesomeMovi/bookmark"]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    const homeBtn = await screen.findByText("HOME");
+    await userEvent.click(homeBtn);
+
+    const homePage = await screen.findByText("Recommended for you");
+    expect(homePage).toBeInTheDocument();
+  });
+
+  test("can user navigate from bookmarks to categories", async () => {
+    render(
+      <MemoryRouter initialEntries={["/awesomeMovi/bookmark"]}>
+        <App />
+      </MemoryRouter>
+    );
+    const categoryBtn = await screen.findByText("CATEGORY");
+    await userEvent.click(categoryBtn);
+
+    const categoryPage = await screen.findByText("Action");
+    expect(categoryPage).toBeInTheDocument();
+  });
+
+  test("Can user navigate from categories to Home", async () => {
+    render(
+      <MemoryRouter initialEntries={["/awesomeMovi/categories"]}>
+        <App />
+      </MemoryRouter>
+    );
+    const homeBtn = await screen.findByText("HOME");
+    await userEvent.click(homeBtn);
+
+    const homePage = await screen.findByText("Recommended for you");
+    expect(homePage).toBeInTheDocument();
+  });
+
+  test("Can user navigate from categories to bookmarks", async () => {
+    render(
+      <MemoryRouter initialEntries={["/awesomeMovi/categories"]}>
+        <App />
+      </MemoryRouter>
+    );
+    const bookmarksBtn = await screen.findByText("BOOKMARKS");
+    await userEvent.click(bookmarksBtn);
+
+    const bookmarksPage = await screen.findByText("Your Bookmarks");
+    expect(bookmarksPage).toBeInTheDocument();
+  });
+});
+
+describe("testing bookmark functionality", () => {
+  test("Can user bookmark a movie", async () => {
+    render(
+      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+        <BookmarkProvider>
+          <App />
+        </BookmarkProvider>
+      </MemoryRouter>
+    );
+
+    const randomMovieCard = (await screen.findAllByTestId("movieCard"))[0];
+    expect(randomMovieCard).toBeInTheDocument();
+
+    const movieThumbnail = await within(randomMovieCard).findByRole("img");
+    const movieSource = movieThumbnail.getAttribute("src");
+
+    const bookmarkBtn = await within(randomMovieCard).findByRole("button");
+    await userEvent.click(bookmarkBtn);
+
+    const bookmarkPage = await screen.findByText("BOOKMARKS");
+    await userEvent.click(bookmarkPage);
+
+    expect(await screen.findByText("Your Bookmarks")).toBeInTheDocument();
+    expect(await screen.findByRole("img")).toHaveAttribute("src", movieSource);
   });
 });
