@@ -12,7 +12,7 @@ const MovieCard = ({ movie }) => {
     e.target.src = defaultImage;
   };
   return (
-    <div className="movie-card">
+    <div className="movie-card" data-testid="movieCard">
       <Link to={`/movie/${movie.id}`} className="movie-link">
         <img
           src={movie.thumbnail || defaultImage}
@@ -32,5 +32,3 @@ const MovieCard = ({ movie }) => {
 };
 
 export default MovieCard;
-
-
