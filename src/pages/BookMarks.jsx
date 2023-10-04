@@ -1,23 +1,28 @@
-import MovieCard from '../component/ui/MovieCard' // Uppdatera sökvägen till din MovieCard-komponent
+import MovieCard from '../component/ui/MovieCard'; 
 import { useBookmark } from '../context/BookMarkCtx';
 import Navbar from "../component/ui/Navbar";
+import Title from '../component/ui/Title';
+import TextParagraph from '../component/ui/TextParagraph';
 
 const BookMarks = () => {
-  const { bookmarks } = useBookmark(); // Hämta bokmärkta filmer från kontexten
+  const { bookmarks } = useBookmark(); 
 
   return (
     <div>
       <Navbar />
-      <h1>Bookmarks</h1>
+      <div>
+      <Title text="Bookmarks" style={{ paddingLeft: 0 }} />
       {bookmarks?.length === 0 ? (
-        <p>No bookmarked movies in your list.</p>
+        <TextParagraph> No bookmarked movies in your list.</TextParagraph>
       ) : (
         <div>
           {bookmarks?.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
+        
       )}
+    </div>
     </div>
   );
 };
