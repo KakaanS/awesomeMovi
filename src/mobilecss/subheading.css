@@ -1,0 +1,18 @@
+/* subheading.css */
+.Subheading {
+  padding: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: left;
+  position: relative;
+}
+
+.Subheading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  width: 15%;
+  height: 1px;
+  background-color: #008E7E;
+}

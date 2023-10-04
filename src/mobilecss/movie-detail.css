@@ -1,0 +1,14 @@
+@media (max-width: 653px) {
+    .mobile-movie-detail {
+        display: flex;
+        flex-direction: column;
+        background-color: blueviolet;
+    }
+
+    .mobile-movie-detail>.movie-detail-text {
+        max-width: 100%;
+                background-color: blueviolet;
+    }
+
+ 
+}
