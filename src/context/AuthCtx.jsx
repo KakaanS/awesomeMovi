@@ -37,13 +37,13 @@ const AuthProvider = ({ children }) => {
     if (storedToken) {
       setUser({ token: storedToken });
     } else {
-      navigate("/awesomeMovi/login");
+      navigate("/login");
     }
   }, [navigate]);
 
   useEffect(() => {
     if (user && justLoggedIn.current) {
-      navigate("/awesomeMovi/");
+      navigate("/");
       justLoggedIn.current = false;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
     try {
       Cookies.remove("token");
       setUser(null);
-      navigate("/awesomeMovi/login");
+      navigate("/login");
     } catch (error) {
       console.error("Failed to log out:", error);
     }

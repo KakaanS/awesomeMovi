@@ -1,36 +1,54 @@
 import { test, expect } from "vitest";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import MovieDetail from "./MovieDetail";
 
-// En mock databas för att köra testerna
+// Mock movie data
+const mockMovie = {
+  title: "Exempelfilm",
+  rating: "R",
+  actors: "Skådespelare 1, Skådespelare 2",
+  genre: "Action",
+  synopsis: "Detta är en exempelbeskrivning av filmen.",
+  thumbnail: "exempel.jpg",
+ name: "Exempelfilm",
+};
 
 test("Renderar filminformation korrekt från databasen", async () => {
-  const mockMovie = {
-    title: "Exempelfilm",
-    rating: 8.5,
-    actors: "Skådespelare 1, Skådespelare 2",
-    genre: "Action",
-    synopsis: "Detta är en exempelbeskrivning av filmen.",
-    thumbnail: "exempel.jpg",
-  };
+  // Render the MovieDetail component with mock data
+  render(
+    <MemoryRouter>
+      <MovieDetail movie={mockMovie} />
+    </MemoryRouter>
+  );
 
-  const { getByText, getByAltText } = render(MovieDetail, {
-    props: { movie: mockMovie },
-  });
+  // Assertions
+  expect(screen.getByText("Exempelfilm")).toBeDefined();
 
-  // Kontrollera om komponenten visar korrekt filminformation.
-  expect(getByText("Exempelfilm").textContent).toMatch("Exempelfilm");
-  expect(getByText("RATING: 8.5").textContent).toMatch("RATING: 8.5");
-  expect(
-    getByText("ACTORS: Skådespelare 1, Skådespelare 2").textContent
-  ).toMatch("ACTORS: Skådespelare 1, Skådespelare 2");
-  expect(getByText("GENRE: Action").textContent).toMatch("GENRE: Action");
-  expect(
-    getByText("SYNOPSIS: Detta är en exempelbeskrivning av filmen.").textContent
-  ).toMatch("SYNOPSIS: Detta är en exempelbeskrivning av filmen.");
+  // Check if "RATING:" is present and then check the next sibling for the rating value
+  const ratingParagraph = screen.getByText("RATING:");
+  expect(ratingParagraph).toBeDefined();
+  expect(ratingParagraph.nextSibling.textContent.trim()).toBe("R");
 
-  // Kontrollera om bilden visas och källa är korrekta.
-  const image = getByAltText("Movie Thumbnail");
+  // Similarly, update other assertions as needed for actors, genre, and synopsis
+  const actorsParagraph = screen.getByText("ACTORS:");
+  expect(actorsParagraph).toBeDefined();
+  expect(actorsParagraph.nextSibling.textContent.trim()).toBe(
+    "Skådespelare 1, Skådespelare 2"
+  );
+
+  const genreParagraph = screen.getByText("GENRE:");
+  expect(genreParagraph).toBeDefined();
+  expect(genreParagraph.nextSibling.textContent.trim()).toBe("Action");
+
+  const synopsisParagraph = screen.getByText("SYNOPSIS:");
+  expect(synopsisParagraph).toBeDefined();
+  expect(synopsisParagraph.nextSibling.textContent.trim()).toBe(
+    "Detta är en exempelbeskrivning av filmen."
+  );
+  // Check that the image has the correct source and alt text
+  const image = screen.getByAltText(mockMovie.name);
   expect(image).toBeDefined();
-  expect(image.getAttribute("src")).toContain("exempel.jpg");
+  expect(image.src).toContain(mockMovie.thumbnail);
+  expect(image.alt).toBe(mockMovie.name);
 });
