@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom"; 
 import dataBase from '../data/movies.json'
 import TitleLine from './ui/TitleLine';
 import MovieCard from './ui/MovieCard';
+
 
 const TrendingMovies = () => {
   // Picks out the movies that have trending = true in the database
@@ -16,9 +16,7 @@ const TrendingMovies = () => {
       <TitleLine text="Trending" />
       <div>
         {trendingMovies.map(movie => (
-          <Link key={movie.id} to={`/movie/${movie.id}`}> {/* Makes thumbnail and title pressable and passes the id in the url */}
             <MovieCard key={movie.id} movie={movie} />
-          </Link>
         ))}
       </div>
     </div>

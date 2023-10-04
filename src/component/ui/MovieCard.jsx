@@ -1,16 +1,21 @@
-/* import { useState } from "react";
- */ import defaultImage from "../../noimage.png";
-import BookMarkButton from "../BookMarkButton";
+import defaultImage from '../../noimage.png';
+import BookMark from '../BookMarkButton';
+import { Link } from "react-router-dom";
+
 
 const MovieCard = ({ movie }) => {
+  const handleBookmarkClick = (e) => {
+    e.stopPropagation(); 
+  };
+
   const movieStyle = {
-    position: "relative",
-    display: "inline-block",
-    margin: "15px",
-    verticalAlign: "top",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "left",
+    position: 'relative',
+    display: 'inline-block',
+    margin: '15px',
+    verticalAlign: 'top',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'left',
   };
 
   const imageStyle = {
@@ -25,37 +30,33 @@ const MovieCard = ({ movie }) => {
   };
 
   const bookmarkStyle = {
-    position: "absolute",
-    top: "0px",
-    right: "10px",
+    position: 'absolute',
+    top: '0px',
+    right: '10px',
   };
 
   const handleImageError = (e) => {
     e.target.src = defaultImage;
   };
-  /* 
-  const [isBookmarked, setIsBookmarked] = useState(false);
 
-  const toggleBookmark = () => {
-    setIsBookmarked((prevIsBookmarked) => !prevIsBookmarked);
-  };
- */
   return (
     <div style={movieStyle}>
-      <img
-        src={movie.thumbnail || defaultImage}
-        alt={movie.name}
-        style={imageStyle}
-        onError={handleImageError}
-      />
-      <p style={movieTitleStyle}>{movie.title}</p>
+      <Link to={`/movie/${movie.id}`}>
+        <img
+          src={movie.thumbnail || defaultImage}
+          alt={movie.name}
+          style={imageStyle}
+          onError={handleImageError}
+        />
+        <p style={movieTitleStyle}>{movie.title}</p>
+      </Link>
       <div style={bookmarkStyle}>
-        {/*         <BookMark onClick={toggleBookmark} isBookmarked={isBookmarked} />
-         */}{" "}
+        <BookMark movie={movie} onClick={handleBookmarkClick} />
       </div>
-      <BookMarkButton movie={movie} />
     </div>
   );
 };
 
 export default MovieCard;
+
+

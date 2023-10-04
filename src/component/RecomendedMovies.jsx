@@ -1,7 +1,6 @@
 import dataBase from '../data/movies.json';
 import MovieCard from './ui/MovieCard';
 import TitleLine from './ui/TitleLine';
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const RecomendedMovies = () => {
   // Plocka ut filmer som inte har trending=true
@@ -24,10 +23,7 @@ const RecomendedMovies = () => {
       <TitleLine text="Recommended for you" />
       <div>
         {randomMovies.map((movie) => (
-          <Link key={movie.id} to={`/movie/${movie.id}`}>
-            {/* Makes thumbnail and title pressable and passes the id in the url */}
             <MovieCard key={movie.id} movie={movie} />
-          </Link>
         ))}
       </div>
     </div>
