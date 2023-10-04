@@ -15,7 +15,7 @@ const BookMark = ({ movie }) => {
   };
 
   return (
-    <ButtonBookmark onClick={toggleBookmark}>
+    <ButtonBookmark data-testid="btnBookmark" onClick={toggleBookmark}>
       {isBookmarked ? "-" : "+"}{" "}
     </ButtonBookmark>
   );
