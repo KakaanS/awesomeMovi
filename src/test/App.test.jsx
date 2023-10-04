@@ -1,7 +1,7 @@
 // Tools
-import { describe, expect, test } from "vitest";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import { render, screen, waitFor, within } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, Router } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
 // Content to be tested
@@ -9,6 +9,7 @@ import App from "../App";
 import PageLogin from "../pages/Login";
 import AuthProvider from "../context/AuthCtx";
 import { AuthContext } from "../context/AuthCtx";
+import AllCtx from "../context/AllCtx";
 import { BookmarkProvider } from "../context/BookMarkCtx";
 
 test("should always pass", () => {
@@ -32,13 +33,13 @@ test("landing on a bad page", () => {
   expect(screen.queryByText("Recommended for you")).toBeNull();
 });
 
-describe("test if user can login", () => {
-  test("if user gets authenticated", async () => {
+describe("test if user can login and logout", () => {
+  test.only("if user gets authenticated", async () => {
     render(
       <MemoryRouter initialEntries={["/awesomeMovi/login"]}>
-        <AuthProvider>
-          <PageLogin />
-        </AuthProvider>
+        <AllCtx>
+          <App />
+        </AllCtx>
       </MemoryRouter>
     );
 
@@ -50,13 +51,8 @@ describe("test if user can login", () => {
     await userEvent.type(passwordInput, "123");
     await userEvent.click(loginButton);
 
-    await waitFor(
-      () => {
-        const loggedIn = screen.getByText("You are logged in!");
-        expect(loggedIn).toBeInTheDocument();
-      },
-      { timeout: 3000 }
-    );
+    const logoutBtn = await screen.findByText("Log Out");
+    expect(logoutBtn).toBeInTheDocument();
   });
 
   test("If token is already set, user gets redirected to /", async () => {
@@ -72,11 +68,24 @@ describe("test if user can login", () => {
 
     expect(redirectedToHome).toBeInTheDocument();
   });
-});
 
-/* describe("test if user can logout", () => {
-  // Waiting for logout button to be integrated.
-}); */
+  test("User can logout, by clicking on logout button", async () => {
+    render(
+      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+        <AllCtx>
+          <App />
+        </AllCtx>
+      </MemoryRouter>
+    );
+    const logoutBtn = await screen.findByText("Log Out");
+    expect(logoutBtn).toBeInTheDocument();
+
+    await userEvent.click(logoutBtn);
+
+    const loginPage = await screen.findByText("Login");
+    expect(loginPage).toBeInTheDocument();
+  });
+});
 
 describe("testing site navigation", () => {
   test("Can user click on a movie and see the movie details", async () => {
@@ -180,6 +189,13 @@ describe("testing site navigation", () => {
 });
 
 describe("testing bookmark functionality", () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+  afterEach(() => {
+    localStorage.clear();
+  });
+
   test("Can user bookmark a movie", async () => {
     render(
       <MemoryRouter initialEntries={["/awesomeMovi/"]}>
@@ -203,5 +219,37 @@ describe("testing bookmark functionality", () => {
 
     expect(await screen.findByText("Your Bookmarks")).toBeInTheDocument();
     expect(await screen.findByRole("img")).toHaveAttribute("src", movieSource);
+  });
+
+  test("Can user remove a bookmark", async () => {
+    render(
+      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+        <BookmarkProvider>
+          <App />
+        </BookmarkProvider>
+      </MemoryRouter>
+    );
+
+    const randomMovieCard = (await screen.findAllByTestId("movieCard"))[0];
+    expect(randomMovieCard).toBeInTheDocument();
+
+    const bookmarkBtn = await within(randomMovieCard).findByRole("button");
+    await userEvent.click(bookmarkBtn);
+
+    const bookmarkPage = await screen.findByText("BOOKMARKS");
+    await userEvent.click(bookmarkPage);
+
+    const bookmarkCard = await screen.findByTestId("bookmarkCard");
+    expect(bookmarkCard).toBeInTheDocument();
+
+    const removeBookmarkBtn = await within(bookmarkCard).findByRole("button");
+    await userEvent.click(removeBookmarkBtn);
+
+    const bookmarkPage2 = await screen.findByText("BOOKMARKS");
+    await userEvent.click(bookmarkPage2);
+
+    expect(
+      await screen.findByText("No bookmarked movies in your list.")
+    ).toBeInTheDocument();
   });
 });

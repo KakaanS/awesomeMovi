@@ -15,7 +15,7 @@ const BookMarks = () => {
         {bookmarks?.length === 0 ? (
           <TextParagraph> No bookmarked movies in your list.</TextParagraph>
         ) : (
-          <div>
+          <div data-testid="bookmarkCard">
             {bookmarks?.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}

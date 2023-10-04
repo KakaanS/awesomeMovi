@@ -37,6 +37,7 @@ const AuthProvider = ({ children }) => {
     if (storedToken) {
       setUser({ token: storedToken });
     } else {
+      console.log("redirected");
       navigate("/awesomeMovi/login");
     }
   }, [navigate]);
