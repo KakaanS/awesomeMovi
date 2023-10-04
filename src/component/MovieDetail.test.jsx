@@ -14,7 +14,7 @@ const mockMovie = {
  name: "Exempelfilm",
 };
 
-test.only("Renderar filminformation korrekt från databasen", async () => {
+test("Renderar filminformation korrekt från databasen", async () => {
   // Render the MovieDetail component with mock data
   render(
     <MemoryRouter>
