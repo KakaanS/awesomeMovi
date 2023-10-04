@@ -122,7 +122,7 @@ describe("testing site navigation", () => {
 
   test("Can user navigate from bookmarks to Home", async () => {
     render(
-      <MemoryRouter initialEntries={["/awesomeMovi/bookmark"]}>
+      <MemoryRouter initialEntries={["/bookmark"]}>
         <App />
       </MemoryRouter>
     );
@@ -136,7 +136,7 @@ describe("testing site navigation", () => {
 
   test("can user navigate from bookmarks to categories", async () => {
     render(
-      <MemoryRouter initialEntries={["/awesomeMovi/bookmark"]}>
+      <MemoryRouter initialEntries={["/bookmark"]}>
         <App />
       </MemoryRouter>
     );
@@ -149,7 +149,7 @@ describe("testing site navigation", () => {
 
   test("Can user navigate from categories to Home", async () => {
     render(
-      <MemoryRouter initialEntries={["/awesomeMovi/categories"]}>
+      <MemoryRouter initialEntries={["/categories"]}>
         <App />
       </MemoryRouter>
     );
@@ -162,7 +162,7 @@ describe("testing site navigation", () => {
 
   test("Can user navigate from categories to bookmarks", async () => {
     render(
-      <MemoryRouter initialEntries={["/awesomeMovi/categories"]}>
+      <MemoryRouter initialEntries={["/categories"]}>
         <App />
       </MemoryRouter>
     );
@@ -184,7 +184,7 @@ describe("testing bookmark functionality", () => {
 
   test("Can user bookmark a movie", async () => {
     render(
-      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+      <MemoryRouter initialEntries={["/"]}>
         <BookmarkProvider>
           <App />
         </BookmarkProvider>
@@ -209,7 +209,7 @@ describe("testing bookmark functionality", () => {
 
   test("Can user remove a bookmark", async () => {
     render(
-      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+      <MemoryRouter initialEntries={["/"]}>
         <BookmarkProvider>
           <App />
         </BookmarkProvider>

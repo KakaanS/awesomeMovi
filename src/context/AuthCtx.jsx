@@ -33,19 +33,18 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("infinite loop?");
     if (cookies.token && justLoggedIn.current) {
-      navigate("/awesomeMovi/");
+      navigate("/");
       justLoggedIn.current = false;
     } else if (!cookies.token) {
-      navigate("/awesomeMovi/login");
+      navigate("/login");
     }
   }, [cookies, navigate]);
 
   const logout = () => {
     try {
       removeCookie("token");
-      navigate("/awesomeMovi/login");
+      navigate("/login");
     } catch (error) {
       console.error("Failed to log out:", error);
     }
