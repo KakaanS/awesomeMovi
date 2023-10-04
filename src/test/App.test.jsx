@@ -1,6 +1,6 @@
 // Tools
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, within, cleanup } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
@@ -237,5 +237,88 @@ describe("testing bookmark functionality", () => {
     expect(
       await screen.findByText("No bookmarked movies in your list.")
     ).toBeInTheDocument();
+  });
+
+  test("Adding movie to bookmark from the movieCard", async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <BookmarkProvider>
+          <App />
+        </BookmarkProvider>
+      </MemoryRouter>
+    );
+
+    const movieOfChoice = await screen.findByText("Psycho");
+    expect(movieOfChoice).toBeInTheDocument();
+
+    user.click(movieOfChoice);
+
+    expect(await screen.findByText("RATING:")).toBeInTheDocument();
+
+    const bookmarkBtn = await screen.findByText("+");
+    await user.click(bookmarkBtn);
+
+    const bookmarkPage = await screen.findByText("BOOKMARKS");
+    await user.click(bookmarkPage);
+    expect(await screen.findByText("Psycho")).toBeInTheDocument();
+  });
+});
+
+describe("Searchbar integration test(s)", async () => {
+  beforeEach(() => {
+    localStorage.clear();
+    cleanup();
+  });
+  afterEach(() => {
+    localStorage.clear();
+    cleanup();
+  });
+
+  test("Can user add searchresult directly to bookmarks", async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <BookmarkProvider>
+          <App />
+        </BookmarkProvider>
+      </MemoryRouter>
+    );
+    const searchbar = await screen.findByPlaceholderText(
+      "Search for a movie..."
+    );
+    await user.type(searchbar, "Psycho");
+    await screen.findByText("Psycho");
+
+    const randomMovieCard = (await screen.findAllByTestId("movieCard"))[0];
+    expect(randomMovieCard).toBeInTheDocument();
+
+    const bookmarkBtn = await within(randomMovieCard).findByRole("button");
+    await userEvent.click(bookmarkBtn);
+
+    const bookmarkPage = await screen.findByText("BOOKMARKS");
+    await userEvent.click(bookmarkPage);
+
+    const bookmarkCard = await screen.findByTestId("bookmarkCard");
+
+    expect(bookmarkCard).toBeInTheDocument();
+  });
+
+  test("Can user search for a movie, click it and see the movie details", async () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    const searchbar = await screen.findByPlaceholderText(
+      "Search for a movie..."
+    );
+    userEvent.type(searchbar, "Psycho");
+    await screen.findByText("Psycho");
+    userEvent.click(await screen.findByText("Psycho"));
+
+    const movieDetails = await screen.findByTestId("movieCard");
+    expect(movieDetails).toBeInTheDocument();
   });
 });
