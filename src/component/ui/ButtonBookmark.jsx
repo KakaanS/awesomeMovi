@@ -1,4 +1,4 @@
-const ButtonBookmark = ({ text }) => {
+const ButtonBookmark = ({ children, onClick }) => {
   const buttonBookmarkStyle = {
     backgroundColor: "#008E7E",
     color: "#fff",
@@ -8,7 +8,11 @@ const ButtonBookmark = ({ text }) => {
     padding: "7px",
   };
 
-  return <button style={buttonBookmarkStyle}>{text}</button>;
+  return (
+    <button style={buttonBookmarkStyle} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 export default ButtonBookmark;

@@ -1,16 +1,13 @@
 import { useState } from "react";
-
 // function & styling
 import { useAuth } from "../context/AuthCtx";
 import userData from "../data/userData.json";
 import Button from "./ui/Button";
-import Title from "./ui/Title"
-import InputLogin from "./ui/InputLogin"
+import Title from "./ui/Title";
+import InputLogin from "./ui/InputLogin";
 import Form from "./ui/Form";
 
-/**
- * Login component, with loginHandler checking data from userData.json (our supersafe DB)
- */
+// Login component, with loginHandler checking data from userData.json (our supersafe DB)
 
 const Login = () => {
   const { login } = useAuth();
@@ -39,10 +36,11 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <Title text="Welcome to Movi" />
       <Form onSubmit={loginHandler}>
         <InputLogin
+          className="input-login"
           type="text"
           placeholder="Username..."
           onChange={(e) => setUsername(e.target.value)}
@@ -52,7 +50,7 @@ const Login = () => {
           placeholder="Password..."
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button type="submit" text="Login" />
+        <Button className="button-login" type="submit" text="Login" />
       </Form>
       {message && <p>{message}</p>}
     </div>
