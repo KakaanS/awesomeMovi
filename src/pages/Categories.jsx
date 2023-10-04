@@ -48,6 +48,7 @@ const Categories = () => {
         style={{ margin: "20px" }}
       />
       <ul style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}>
+         {/* Display category buttons */}
         {categories.map((category, index) => (
           <div key={index} style={{ flexBasis: "10%", margin: "5px" }}>
             <ButtonFilter
@@ -58,6 +59,7 @@ const Categories = () => {
           </div>
         ))}
       </ul>
+      {/* Display movies when a category is selected */}
       {selectedCategory && <Category category={selectedCategory} />}
       {showAllMovies &&
         movieData.map((movie) => (
