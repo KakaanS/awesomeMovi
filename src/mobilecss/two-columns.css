@@ -1,0 +1,17 @@
+/* movie-detail.css */
+.TwoColumnLayout {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.TextContainer {
+    flex: 1;
+    max-width: 40%;
+}
+
+.Image {
+    max-width: 35%;
+    padding-right: 40px;
+}

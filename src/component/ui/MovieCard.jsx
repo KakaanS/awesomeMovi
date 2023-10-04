@@ -1,57 +1,30 @@
 import defaultImage from "../../noimage.png";
 import BookMark from "../BookMarkButton";
 import { Link } from "react-router-dom";
+import "../../mobilecss/movie-card.css";
 
 const MovieCard = ({ movie }) => {
   const handleBookmarkClick = (e) => {
     e.stopPropagation();
   };
 
-  const movieStyle = {
-    position: "relative",
-    display: "inline-block",
-    margin: "15px",
-    verticalAlign: "top",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "left",
-  };
-
-  const imageStyle = {
-    width: "222px",
-  };
-
-  const movieTitleStyle = {
-    width: "100%",
-    wordWrap: "break-word",
-    fontSize: "14px",
-    maxWidth: `${imageStyle.width}`,
-  };
-
-  const bookmarkStyle = {
-    position: "absolute",
-    top: "0px",
-    right: "10px",
-  };
-
   const handleImageError = (e) => {
     e.target.src = defaultImage;
   };
-
   return (
-    <div data-testid="movieCard" style={movieStyle}>
-      <Link to={`/movie/${movie.id}`}>
+    <div className="movie-card" data-testid="movieCard">
+      <Link to={`/movie/${movie.id}`} className="movie-link">
         <img
           src={movie.thumbnail || defaultImage}
           alt={movie.name}
-          style={imageStyle}
+          className="movie-image"
           onError={handleImageError}
         />
-        <p style={movieTitleStyle}>{movie.title}</p>
-        <p>{movie.year}</p>
-        <p>{movie.rating}</p>
+        <p className="movie-title">{movie.title}</p>
+        <p className="movie-year">{movie.year} </p>
+        <p className="movie-paragraph">{movie.rating}</p>
       </Link>
-      <div style={bookmarkStyle}>
+      <div className="bookmark-button">
         <BookMark movie={movie} onClick={handleBookmarkClick} />
       </div>
     </div>

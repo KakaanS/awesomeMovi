@@ -19,7 +19,7 @@ const MovieDetail = ({ movie }) => {
         <BookMark movie={movie}/>
       </TwoColumnLayout>
     </div>
-  );
-};
+  )
+  };
 
-export default MovieDetail;
+  export default MovieDetail
