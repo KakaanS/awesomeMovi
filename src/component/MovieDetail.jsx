@@ -2,6 +2,7 @@ import Navbar from "../component/ui/Navbar";
 import TwoColumnLayout from './ui/TwoColumnLayout';
 import TitleLine from "./ui/TitleLine";
 import TextParagraph from "./ui/TextParagraph";
+import BookMark from "./BookMarkButton"
 
 const MovieDetail = ({ movie }) => {
   return (
@@ -15,6 +16,7 @@ const MovieDetail = ({ movie }) => {
           <TextParagraph>GENRE: </TextParagraph>{movie.genre}
           <TextParagraph>SYNOPSIS: </TextParagraph>{movie.synopsis}
         </div>
+        <BookMark movie={movie}/>
       </TwoColumnLayout>
     </div>
   );
