@@ -31,8 +31,8 @@ test("landing on a bad page", () => {
   expect(screen.queryByText("Recommended for you")).toBeNull();
 });
 
-describe("test if user can login and logout", () => {
-  test("if user gets authenticated", async () => {
+describe("Login, logout, token verification", () => {
+  test("test if user can login and logout", async () => {
     const user = userEvent.setup();
     render(
       <MemoryRouter initialEntries={["/login"]}>
@@ -58,7 +58,7 @@ describe("test if user can login and logout", () => {
     expect(await screen.findByText("Login")).toBeInTheDocument();
   });
 
-  test("If token is already set, user gets redirected to /", async () => {
+  test("if token is already set, user gets redirected to /", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <AuthContext.Provider value={{ user: { token: "sampletoken123" } }}>
@@ -320,5 +320,51 @@ describe("Searchbar integration test(s)", async () => {
 
     const movieDetails = await screen.findByTestId("movieCard");
     expect(movieDetails).toBeInTheDocument();
+  });
+});
+
+describe("testing category functionality", () => {
+  test("Can user click on a category, then a movie within that category and see the movie details", async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    const category = await screen.findByText("CATEGORY");
+    user.click(category);
+
+    const categoryPage = await screen.findByText("Action");
+    expect(categoryPage).toBeInTheDocument();
+
+    const movie = await screen.findByText("The Dark Knight");
+    user.click(movie);
+
+    const movieDetails = await screen.findByText("GENRE:");
+
+    expect(movieDetails).toBeInTheDocument();
+  });
+  test("if I can click a specific category, see the movies then click All Movies, to see all movies", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <App />
+      </MemoryRouter>
+    );
+    const category = await screen.findByText("CATEGORY");
+    await user.click(category);
+
+    const categoryPage = await screen.findByText("Horror");
+    expect(categoryPage).toBeInTheDocument();
+
+    const movie = await screen.findByText("Psycho");
+    expect(movie).toBeInTheDocument();
+
+    const allMovies = await screen.findByText("All movies");
+    await user.click(allMovies);
+
+    expect(categoryPage).toBeInTheDocument();
   });
 });

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/21</span>
+                <span class='fraction'>21/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/21</span>
+                <span class='fraction'>21/21</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -91,18 +91,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">180x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import MovieCard from "./ui/MovieCard"; // Importera din nya komponent
@@ -111,19 +111,19 @@ import Subheading from "./ui/Subheading";
 &nbsp;
 // Displays all the movies from a specific category
 &nbsp;
-const Category = <span class="fstat-no" title="function not covered" >({ category }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const moviesInCategory = movieData.filter((movie) =&gt;</span>
-<span class="cstat-no" title="statement not covered" >    movie.genre.split(", ").some((genre) =&gt; genre === category)</span>
-<span class="cstat-no" title="statement not covered" >  );</span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;div&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;Subheading text={category} /&gt;</span>
-<span class="cstat-no" title="statement not covered" >      {moviesInCategory.map((movie) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >        &lt;MovieCard key={movie.id} movie={movie} /&gt;</span>
-<span class="cstat-no" title="statement not covered" >      ))}</span>
-<span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >  );</span>
-<span class="cstat-no" title="statement not covered" >};</span>
+const Category = ({ category }) =&gt; {
+  const moviesInCategory = movieData.filter((movie) =&gt;
+    movie.genre.split(", ").some((genre) =&gt; genre === category)
+  );
+  return (
+    &lt;div&gt;
+      &lt;Subheading text={category} /&gt;
+      {moviesInCategory.map((movie) =&gt; (
+        &lt;MovieCard key={movie.id} movie={movie} /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};
 &nbsp;
 export default Category;
 &nbsp;</pre></td></tr></table></pre>
@@ -133,7 +133,7 @@ export default Category;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-04T15:40:23.248Z
+                at 2023-10-04T18:27:44.870Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
