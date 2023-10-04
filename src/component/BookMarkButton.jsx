@@ -1,4 +1,5 @@
 import { useBookmark } from "../context/BookMarkCtx.jsx";
+import ButtonBookmark from "./ui/ButtonBookmark.jsx";
 
 const BookMark = ({ movie }) => {
   const { addToBookmarks, removeFromBookmarks, bookmarks } = useBookmark();
@@ -13,7 +14,11 @@ const BookMark = ({ movie }) => {
     }
   };
 
-  return <button onClick={toggleBookmark}>{isBookmarked ? "-" : "+"}</button>;
+  return (
+    <ButtonBookmark onClick={toggleBookmark}>
+      {isBookmarked ? "-" : "+"}{" "}
+    </ButtonBookmark>
+  );
 };
 
 export default BookMark;
