@@ -35,7 +35,7 @@ describe("test if user can login and logout", () => {
   test("if user gets authenticated", async () => {
     const user = userEvent.setup();
     render(
-      <MemoryRouter initialEntries={["/awesomeMovi/login"]}>
+      <MemoryRouter initialEntries={["/login"]}>
         <AuthProvider>
           <App />
         </AuthProvider>
@@ -60,7 +60,7 @@ describe("test if user can login and logout", () => {
 
   test("If token is already set, user gets redirected to /", async () => {
     render(
-      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+      <MemoryRouter initialEntries={["/"]}>
         <AuthContext.Provider value={{ user: { token: "sampletoken123" } }}>
           <App />
         </AuthContext.Provider>
@@ -76,7 +76,7 @@ describe("test if user can login and logout", () => {
 describe("testing site navigation", () => {
   test("Can user click on a movie and see the movie details", async () => {
     render(
-      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+      <MemoryRouter initialEntries={["/"]}>
         <AuthContext.Provider value={{ user: { token: "sampletoken123" } }}>
           <App />
         </AuthContext.Provider>
@@ -92,7 +92,7 @@ describe("testing site navigation", () => {
 
   test("Can user click CATEGORY and see the category page", async () => {
     render(
-      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+      <MemoryRouter initialEntries={["/"]}>
         <AuthContext.Provider value={{ user: { token: "sampletoken123" } }}>
           <App />
         </AuthContext.Provider>
@@ -108,7 +108,7 @@ describe("testing site navigation", () => {
 
   test("Can user click on bookmarks and see their bookmarks", async () => {
     render(
-      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
+      <MemoryRouter initialEntries={["/"]}>
         <App />
       </MemoryRouter>
     );
