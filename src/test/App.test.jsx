@@ -33,7 +33,7 @@ test("landing on a bad page", () => {
 });
 
 describe("test if user can login", () => {
-  test.only("if user gets authenticated", async () => {
+  test("if user gets authenticated", async () => {
     render(
       <MemoryRouter initialEntries={["/awesomeMovi/login"]}>
         <AuthProvider>
