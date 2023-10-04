@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import App from "./App.jsx";
 import "./index.css";
-import AllCtx from "./context/allCtx.jsx";
+import AllCtx from "./context/AllCtx.jsx";
 
 // We seriously need to setup ESLINT.config and manage rules
 

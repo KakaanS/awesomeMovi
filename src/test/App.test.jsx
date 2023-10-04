@@ -1,15 +1,13 @@
 // Tools
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
-import { render, screen, waitFor, within } from "@testing-library/react";
-import { MemoryRouter, Router } from "react-router-dom";
+import { render, screen, within } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
 // Content to be tested
 import App from "../App";
-import PageLogin from "../pages/Login";
 import AuthProvider from "../context/AuthCtx";
 import { AuthContext } from "../context/AuthCtx";
-import AllCtx from "../context/AllCtx";
 import { BookmarkProvider } from "../context/BookMarkCtx";
 
 test("should always pass", () => {
@@ -34,12 +32,13 @@ test("landing on a bad page", () => {
 });
 
 describe("test if user can login and logout", () => {
-  test.only("if user gets authenticated", async () => {
+  test("if user gets authenticated", async () => {
+    const user = userEvent.setup();
     render(
       <MemoryRouter initialEntries={["/awesomeMovi/login"]}>
-        <AllCtx>
+        <AuthProvider>
           <App />
-        </AllCtx>
+        </AuthProvider>
       </MemoryRouter>
     );
 
@@ -47,12 +46,16 @@ describe("test if user can login and logout", () => {
     const passwordInput = screen.getByPlaceholderText("Password...");
     const loginButton = screen.getByRole("button");
 
-    await userEvent.type(usernameInput, "sampleuser");
-    await userEvent.type(passwordInput, "123");
-    await userEvent.click(loginButton);
+    await user.type(usernameInput, "sampleuser");
+    await user.type(passwordInput, "123");
+    await user.click(loginButton);
 
     const logoutBtn = await screen.findByText("Log Out");
+
     expect(logoutBtn).toBeInTheDocument();
+
+    await user.click(logoutBtn);
+    expect(await screen.findByText("Login")).toBeInTheDocument();
   });
 
   test("If token is already set, user gets redirected to /", async () => {
@@ -67,23 +70,6 @@ describe("test if user can login and logout", () => {
     const redirectedToHome = await screen.findByText("HOME");
 
     expect(redirectedToHome).toBeInTheDocument();
-  });
-
-  test("User can logout, by clicking on logout button", async () => {
-    render(
-      <MemoryRouter initialEntries={["/awesomeMovi/"]}>
-        <AllCtx>
-          <App />
-        </AllCtx>
-      </MemoryRouter>
-    );
-    const logoutBtn = await screen.findByText("Log Out");
-    expect(logoutBtn).toBeInTheDocument();
-
-    await userEvent.click(logoutBtn);
-
-    const loginPage = await screen.findByText("Login");
-    expect(loginPage).toBeInTheDocument();
   });
 });
 
