@@ -32,6 +32,24 @@
     .phoneMenuButton {
         position: absolute;
         /* FIXED? */
+        margin-top: -40px;
+        width: 60px;
+        height: 60px;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        color: #fff;
+
+    }
+
+    .closePhoneMenuButton {
+        position: absolute;
+        top: 120px;
+        left: 80px;
+        /* FIXED? */
         z-index: 2;
         margin-top: -40px;
         width: 60px;
@@ -86,6 +104,7 @@
     }
 
 }
+
 /* If the width is over 768 then hide the menu button */
 
 @media (min-width: 768px) {

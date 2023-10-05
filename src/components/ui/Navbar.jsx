@@ -54,7 +54,7 @@ const Navbar = () => {
 
         {phoneMenuVisible ? (
           // X icon when menu is open.
-          <FontAwesomeIcon className="i"  icon={faX} />
+          <FontAwesomeIcon className="i" icon={faX} />
         ) : (
           // Bars icon when menu is closed.
           <FontAwesomeIcon className="i" icon={faBars} />
@@ -64,6 +64,10 @@ const Navbar = () => {
       {/* Phone menu (visible on phones when the button is clicked) */}
       {phoneMenuVisible && (
         <ul className="phoneMenu">
+          <div className="closePhoneMenuButton" onClick={togglePhoneMenu}>
+            <FontAwesomeIcon className="i" icon={faX} />
+          </div>
+
           <li className="phoneMenuItem">
             <Link to="/" className="linkStyle" onClick={handleHomeClick}>
               HOME
