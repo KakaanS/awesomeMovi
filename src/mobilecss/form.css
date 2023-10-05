@@ -1,13 +1,13 @@
-.formContainerStyle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
+.form-container-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
 }
 
-.formStyle {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
+.form-style {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
 }

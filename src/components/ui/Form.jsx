@@ -2,8 +2,8 @@ import "../../mobilecss/form.css";
 
 const Form = ({ children, onSubmit }) => {
   return (
-    <div className="formContainerStyle">
-      <form onSubmit={onSubmit} className="formStyle">
+    <div className="form-container-style">
+      <form onSubmit={onSubmit} className="form-style">
         {children}
       </form>
     </div>

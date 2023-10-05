@@ -26,7 +26,7 @@ test('Should display movies within the category', () => {
   expect(bookmarkButton).toHaveLength(2);
   expect(screen.getByText("Psycho")).toBeInTheDocument();
   expect(screen.getByText("Rear Window")).toBeInTheDocument();
-  expect(screen.queryByText("The Shawshank Redemption")).toBeNull()
+  expect(screen.queryByText("The Shawshank Redemption")).not.toBeInTheDocument()
 
 });
 // Checks that movies are not rendered when incorrect prop is passed

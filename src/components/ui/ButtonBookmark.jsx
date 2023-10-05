@@ -2,7 +2,7 @@ import "../../mobilecss/button-bookmark.css";
 
 const ButtonBookmark = ({ children, onClick }) => {
   return (
-    <button className="buttonBookmarkStyle" onClick={onClick}>
+    <button className="button-bookmark-style" onClick={onClick}>
       {children}
     </button>
   );
