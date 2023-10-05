@@ -15,7 +15,7 @@ test('shows the text "Recommended for you"', () => {
     expect(documentText).toBeInTheDocument
 });
 
-//Checks if it render 5 movies
+//Checks if it render 5 movies 
 
 test("shows a list of movies", () => {
   render(
@@ -23,6 +23,6 @@ test("shows a list of movies", () => {
       <RecomendedMovies />
     </MemoryRouter>
   );
-   const movieCards = screen.getAllByTestId("movieCard"); // Använd rätt test-id
+   const movieCards = screen.getAllByTestId("movieCard");
   expect(movieCards.length).toBe(5);
 });
