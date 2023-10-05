@@ -23,7 +23,7 @@
 @media screen and (max-width: 768px) {
   .filter-btn {
     height: 40px;
-    width: 95%;
+    width: fit-content;
     background-color: transparent;
     border: none;
     justify-content: center;
