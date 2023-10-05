@@ -10,6 +10,7 @@ const MovieDetail = ({ movie }) => {
       <Navbar />
       <TitleLine text={movie.title} />
       <TwoColumnLayout imageSrc={movie.thumbnail} imageAlt={movie.name}>
+        <BookMark movie={movie} />
         <div className="movie-detail-info">
           <TextParagraph>RATING:</TextParagraph>
           {movie.rating}
@@ -20,7 +21,6 @@ const MovieDetail = ({ movie }) => {
           <TextParagraph>SYNOPSIS: </TextParagraph>
           {movie.synopsis}
         </div>
-        <BookMark movie={movie} />
       </TwoColumnLayout>
     </div>
   );
