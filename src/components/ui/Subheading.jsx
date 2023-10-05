@@ -1,7 +1,7 @@
-import "../../mobilecss/subheading.css"; 
+import "../../mobilecss/subheading.css";
 
 const Subheading = ({ text }) => {
-  return <h3 className="Subheading">{text}</h3>;
+  return <h3 className="subheading">{text}</h3>;
 };
 
 export default Subheading;

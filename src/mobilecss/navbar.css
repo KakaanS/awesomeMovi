@@ -1,18 +1,18 @@
-.navbarStyle {
+.navbar-style {
     padding: 10px 0;
 }
 
-.ulStyle {
+.ul-style {
     list-style: none;
     display: flex;
     justify-content: center;
 }
 
-.liStyle {
+.li-style {
     margin: 0 20px;
 }
 
-.linkStyle {
+.link-style {
     text-transform: uppercase;
     color: #fff;
     font-weight: 800;
@@ -21,10 +21,11 @@
 }
 
 /* Media query for phones */
+/* stylelint-disable-next-line media-feature-range-notation */
 @media (max-width: 768px) {
 
     /* Hide the unordered list on Desktop */
-    .ulStyle {
+    .ul-style {
         visibility: hidden;
     }
 
@@ -64,9 +65,8 @@
 
     }
 
-
     /* Styles for the open menu button icon */
-    .menuIcon.open {
+    .menu-icon.open {
         background-color: transparent;
     }
 
@@ -86,7 +86,6 @@
         margin: 0;
         padding: 0;
         z-index: 1;
-
     }
 
     .phoneMenuItem {
@@ -102,14 +101,14 @@
     .i {
         font-size: 30px;
     }
-
 }
+
 
 /* If the width is over 768 then hide the menu button */
 
+/* stylelint-disable-next-line media-feature-range-notation */
 @media (min-width: 768px) {
-    .phoneMenuButton {
+    .phone-menu-button {
         display: none;
     }
-
 }

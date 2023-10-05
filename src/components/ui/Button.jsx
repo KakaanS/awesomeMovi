@@ -2,7 +2,7 @@ import "../../mobilecss/button.css";
 
 const Button = ({ text, onClick }) => {
   return (
-    <button className="buttonStyle" onClick={onClick}>
+    <button className="button-style" onClick={onClick}>
       {text}
     </button>
   );
