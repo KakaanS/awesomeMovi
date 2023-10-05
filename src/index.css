@@ -88,9 +88,9 @@ button:focus-visible {
   color: #008e7e;
 }
 
-@media (max-width: 653px) {
+@media (max-width: 768px) {
   body {
-    padding: 0 0.5rem;
+    padding: 0;
 
   }
 

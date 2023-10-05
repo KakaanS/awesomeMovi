@@ -9,7 +9,7 @@
 }
 
 
-@media (max-width: 653px) {
+@media (max-width: 768px) {
     .filter-button {
         padding: 0 0.6rem;
     }
