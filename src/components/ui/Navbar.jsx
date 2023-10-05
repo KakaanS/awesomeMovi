@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import { useAuth } from "../../context/AuthCtx";
 import "../../mobilecss/navbar.css";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 const Navbar = () => {
   const { logout } = useAuth();
   const [phoneMenuVisible, setPhoneMenuVisible] = useState(false);
@@ -48,9 +49,7 @@ const Navbar = () => {
       {/* Phone menu button (visible on phones) */}
       <div className="phoneMenuButton" onClick={togglePhoneMenu}>
         {/* Mobile menu button with three horizontal lines */}
-        <div className="menuBar"></div>
-        <div className="menuBar"></div>
-        <div className="menuBar"></div>
+        <FontAwesomeIcon className="i" icon={faBars} />
       </div>
 
       {/* Phone menu (visible on phones when the button is clicked) */}
