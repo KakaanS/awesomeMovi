@@ -14,3 +14,14 @@
   max-width: 35%;
   padding-right: 40px;
 }
+
+
+@media (max-width: 768px) {
+.two-column-layout {
+    flex-direction: column;
+}
+.image {
+    padding-top: 40px;
+    max-width: 60%;
+}
+}
