@@ -15,3 +15,9 @@
   height: 1px;
   background-color: #008e7e;
 }
+
+@media (max-width: 768px) {
+    .title-line {
+        width: 80%;
+    }
+}
