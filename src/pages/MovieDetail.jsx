@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import MovieDetail from "../component/MovieDetail";
+import MovieDetail from "../components/MovieDetail";
 import dataBase from "../data/movies.json";
 
 const MovieDetailPage = () => {

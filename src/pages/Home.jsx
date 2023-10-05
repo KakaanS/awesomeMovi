@@ -1,11 +1,11 @@
 import { useState } from "react";
-import RecomendedMovies from "../component/RecomendedMovies";
-import TrendingMovies from "../component/TrendingMovies";
-import SearchBox from "../component/SearchBox";
-import MovieCard from "../component/ui/MovieCard";
-import Navbar from "../component/ui/Navbar";
+import RecomendedMovies from "../components/RecomendedMovies";
+import TrendingMovies from "../components/TrendingMovies";
+import SearchBox from "../components/SearchBox";
+import MovieCard from "../components/ui/MovieCard";
+import Navbar from "../components/ui/Navbar";
 
-const Home = () => {
+const HomePage = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchText, setSearchText] = useState("");
 
@@ -40,4 +40,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
