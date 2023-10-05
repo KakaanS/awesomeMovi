@@ -19,5 +19,9 @@
 @media (max-width: 768px) {
     .title-line {
         width: 80%;
+        padding: 10px 0px;
     }
+        .title-line::after {
+            left: 0;
+        }
 }
