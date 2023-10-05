@@ -1,21 +1,21 @@
-.navbarStyle {
-    padding: 10px 0;
+.navbar-style {
+  padding: 10px 0;
 }
 
-.ulStyle {
-    list-style: none;
-    display: flex;
-    justify-content: center;
+.ul-style {
+  list-style: none;
+  display: flex;
+  justify-content: center;
 }
 
-.liStyle {
-    margin: 0 20px;
+.li-style {
+  margin: 0 20px;
 }
 
-.linkStyle {
-    text-transform: uppercase;
-    color: #fff;
-    font-weight: 800;
-    text-decoration: none;
-    transition: color 0.3s;
+.link-style {
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  transition: color 0.3s;
 }

@@ -19,24 +19,24 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbarStyle">
-      <ul className="ulStyle">
-        <li className="liStyle">
-          <Link to="/" className="linkStyle" onClick={handleHomeClick}>
+    <nav className="navbar-style">
+      <ul className="ul-style">
+        <li className="li-style">
+          <Link to="/" className="link-style" onClick={handleHomeClick}>
             HOME
           </Link>
         </li>
-        <li className="liStyle">
-          <Link to="/categories" className="linkStyle">
+        <li className="li-style">
+          <Link to="/categories" className="link-style">
             CATEGORY
           </Link>
         </li>
-        <li className="liStyle">
-          <Link to="/bookmark" className="linkStyle">
+        <li className="li-style">
+          <Link to="/bookmark" className="link-style">
             BOOKMARKS
           </Link>
         </li>
-        <li className="liStyle">
+        <li className="li-style">
           <Button text="Log Out" onClick={handleLogout} />
         </li>
       </ul>
