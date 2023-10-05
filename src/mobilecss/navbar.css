@@ -62,6 +62,7 @@
         align-items: center;
         cursor: pointer;
         color: #fff;
+  }
 
     }
 
@@ -94,6 +95,7 @@
         height: 60px;
     }
 
+
     .link-style {
         font-size: 26px;
     }
@@ -101,7 +103,6 @@
     .i {
         font-size: 30px;
     }
-}
 
 
 /* If the width is over 768 then hide the menu button */
