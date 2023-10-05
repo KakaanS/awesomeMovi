@@ -48,7 +48,7 @@ const Categories = () => {
         style={{ margin: "20px" }}
       />
       <ul style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}>
-         {/* Display category buttons */}
+        {/* Display category buttons */}
         {categories.map((category, index) => (
           <div key={index} style={{ flexBasis: "10%", margin: "5px" }}>
             <ButtonFilter
@@ -63,9 +63,7 @@ const Categories = () => {
       {selectedCategory && <Category category={selectedCategory} />}
       {showAllMovies &&
         movieData.map((movie) => (
-          <div key={movie.id}>
-            <MovieCard movie={movie} />
-          </div>
+            <MovieCard movie={movie} key={movie.id} />
         ))}
     </div>
   );
