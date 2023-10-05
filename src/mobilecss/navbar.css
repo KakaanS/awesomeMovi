@@ -85,7 +85,7 @@
     }
 
 }
-
+/* If the width is over 768 then hide the menu button */
 
 @media (min-width: 768px) {
     .phoneMenuButton {
