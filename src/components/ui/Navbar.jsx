@@ -6,8 +6,9 @@ import "../../mobilecss/navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import "../../mobilecss/navbar.css";
 
-const Navbar = () => {
+const Navbars = () => {
   const { logout } = useAuth();
   const [phoneMenuVisible, setPhoneMenuVisible] = useState(false);
 
@@ -91,4 +92,4 @@ const Navbar = () => {
     </nav>
   );
 };
-export default Navbar;
+export default Navbars;
