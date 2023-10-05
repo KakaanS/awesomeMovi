@@ -1,8 +1,8 @@
-.bodyTextStyle {
-    padding: 10px 10px;
-    color: #fff;
-    text-transform: uppercase;
-    text-align: center;
-    position: relative;
-    font-size: 10px;
+.body-text-style {
+  padding: 10px 10px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  font-size: 10px;
 }

@@ -2,9 +2,9 @@ import "../../mobilecss/input-login.css";
 
 const InputLogin = ({ type, value, onChange, placeholder }) => {
   return (
-    <div className="LoginInputContainerStyle">
+    <div className="login-input-container-style">
       <input
-        className="LoginInputStyle"
+        className="login-input-style"
         type={type}
         placeholder={placeholder}
         value={value}

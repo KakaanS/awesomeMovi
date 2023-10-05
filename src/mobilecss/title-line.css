@@ -1,17 +1,17 @@
-.TitleLine {
-    padding: 10px;
-    color: #fff;
-    text-transform: uppercase;
-    text-align: left;
-    position: relative;
+.title-line {
+  padding: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: left;
+  position: relative;
 }
 
-.TitleLine::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 10px;
-    width: 30%;
-    height: 1px;
-    background-color: #008e7e;
+.title-line::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  width: 30%;
+  height: 1px;
+  background-color: #008e7e;
 }

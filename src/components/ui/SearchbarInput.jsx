@@ -4,14 +4,9 @@ import "../../mobilecss/searchbar-container.css";
 
 const SearchbarInput = ({ value, onChange, placeholder, type }) => {
   return (
-    <div className="searchbarContainerStyle">
-      <div
-        className="searchbarStyle"
-      >
-        <FontAwesomeIcon
-          icon={faSearch}
-          className="iconStyle"
-        />
+    <div className="searchbar-container-style">
+      <div className="searchbar-style">
+        <FontAwesomeIcon icon={faSearch} className="icon-style" />
         <input
           style={{
             border: "none",
