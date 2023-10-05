@@ -4,5 +4,17 @@
   cursor: pointer;
   text-transform: uppercase;
   border-radius: 0;
-  padding: 7px;
+  padding: 10px;
+    margin-top: 2rem;
+      width: 5rem;
+      font-size: 30px;
+
+}
+
+@media (max-width: 768px) {
+.button-bookmark-style {
+  width: 4rem;
+  margin-top: 2rem;
+  font-size: 20px;
+}
 }

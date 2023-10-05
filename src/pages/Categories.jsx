@@ -63,9 +63,7 @@ const CategoriesPage = () => {
       {selectedCategory && <Category category={selectedCategory} />}
       {showAllMovies &&
         movieData.map((movie) => (
-          <div key={movie.id}>
-            <MovieCard movie={movie} />
-          </div>
+            <MovieCard movie={movie} key={movie.id} />
         ))}
     </div>
   );

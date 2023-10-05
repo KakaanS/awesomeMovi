@@ -18,6 +18,7 @@
     font-weight: 800;
     text-decoration: none;
     transition: color 0.3s;
+    font-size: 14px;
 }
 
 /* Media query for phones */
@@ -63,6 +64,9 @@
         cursor: pointer;
         color: #fff;
   }
+  .link-style {
+    font-size: 26px;
+  }
 
     }
 
@@ -95,11 +99,6 @@
         height: 60px;
     }
 
-
-    .link-style {
-        font-size: 26px;
-    }
-
     .i {
         font-size: 30px;
     }
@@ -112,4 +111,6 @@
     .phone-menu-button {
         display: none;
     }
+
+    
 }
