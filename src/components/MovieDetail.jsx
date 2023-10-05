@@ -10,7 +10,7 @@ const MovieDetail = ({ movie }) => {
       <Navbar />
       <TitleLine text={movie.title} />
       <TwoColumnLayout imageSrc={movie.thumbnail} imageAlt={movie.name}>
-        <div>
+        <div className="movie-detail-info">
           <TextParagraph>RATING:</TextParagraph>
           {movie.rating}
           <TextParagraph>ACTORS: </TextParagraph>
