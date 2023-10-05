@@ -1,6 +1,6 @@
-import Login from "../component/Login";
+import Login from "../components/Login";
 
-const PageLogin = () => {
+const LoginPage = () => {
   return (
     <div>
       <Login />
@@ -8,4 +8,4 @@ const PageLogin = () => {
   );
 };
 
-export default PageLogin;
+export default LoginPage;

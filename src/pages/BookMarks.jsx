@@ -1,10 +1,10 @@
-import MovieCard from "../component/ui/MovieCard";
+import MovieCard from "../components/ui/MovieCard";
 import { useBookmark } from "../context/BookMarkCtx";
-import Navbar from "../component/ui/Navbar";
-import Title from "../component/ui/Title";
-import TextParagraph from "../component/ui/TextParagraph";
+import Navbar from "../components/ui/Navbar";
+import Title from "../components/ui/Title";
+import TextParagraph from "../components/ui/TextParagraph";
 
-const BookMarks = () => {
+const BookMarksPage = () => {
   const { bookmarks } = useBookmark();
 
   return (
@@ -26,4 +26,4 @@ const BookMarks = () => {
   );
 };
 
-export default BookMarks;
+export default BookMarksPage;
