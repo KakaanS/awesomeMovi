@@ -19,6 +19,7 @@ const mockedMovie = {
 };
 
 test("Should switch the addition sign to a subraction sign", async () => {
+  const user = userEvent.setup();
   render(
     <MemoryRouter>
       <AllCtx>
@@ -29,7 +30,6 @@ test("Should switch the addition sign to a subraction sign", async () => {
   const defaultBookmarkButton = screen.getByRole("button", { name: "+" });
   expect(defaultBookmarkButton).toBeInTheDocument();
 
-  const user = userEvent.setup();
   await user.click(defaultBookmarkButton);
   const bookmarkButtonAfter = screen.getByRole("button", { name: "-" });
   expect(bookmarkButtonAfter).toBeInTheDocument();
