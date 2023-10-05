@@ -1,4 +1,3 @@
-
 .button-filter-style {
   border-radius: 20px;
   padding: 8px 30px;
@@ -7,4 +6,48 @@
   border: 1px solid #008e7e;
   text-transform: uppercase;
   font-size: 10px;
+}
+
+
+
+.all-filter-container {
+  margin-top: 1px;
+  background-color: transparent;
+  width: 95%;
+  height: fit-content;
+  display: block;
+  text-transform: uppercase;
+}
+
+
+@media screen and (max-width: 768px) {
+  .filter-btn {
+    height: 40px;
+    width: 95%;
+    background-color: transparent;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding-bottom: 30px;
+
+  }
+
+  .filter-btn {
+    display: block;
+  }
+
+}
+
+@media screen and (min-width: 768px) {
+  .filter-btn {
+    display: none;
+
+  }
+  .all-filter-container{
+    display: block;
+  }
+
+
 }
