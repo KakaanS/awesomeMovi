@@ -14,7 +14,6 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-// eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const navigate = useNavigate();
