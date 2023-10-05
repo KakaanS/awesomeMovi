@@ -33,9 +33,10 @@
         position: absolute;
         /* FIXED? */
         z-index: 2;
+        margin-top: -40px;
         width: 60px;
         height: 60px;
-        background-color: #222;
+        background-color: transparent;
         display: flex;
         justify-content: center;
         flex-direction: column;
