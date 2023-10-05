@@ -49,7 +49,7 @@ const Navbar = () => {
         </li>
       </ul>
       {/* Phone menu button (visible on phones) */}
-      <div className="phoneMenuButton" onClick={togglePhoneMenu}>
+      <div className="phone-menu-button" onClick={togglePhoneMenu}>
         {/* Mobile menu button with three horizontal lines */}
 
         {phoneMenuVisible ? (
@@ -63,27 +63,27 @@ const Navbar = () => {
 
       {/* Phone menu (visible on phones when the button is clicked) */}
       {phoneMenuVisible && (
-        <ul className="phoneMenu">
-          <div className="closePhoneMenuButton" onClick={togglePhoneMenu}>
+        <ul className="phone-menu">
+          <div className="close-phone-menu-button" onClick={togglePhoneMenu}>
             <FontAwesomeIcon className="i" icon={faX} />
           </div>
 
-          <li className="phoneMenuItem">
-            <Link to="/" className="linkStyle" onClick={handleHomeClick}>
+          <li className="phone-menu-item">
+            <Link to="/" className="link-style" onClick={handleHomeClick}>
               HOME
             </Link>
           </li>
-          <li className="phoneMenuItem">
-            <Link to="/categories" className="linkStyle">
+          <li className="phone-menu-item">
+            <Link to="/categories" className="link-style">
               CATEGORY
             </Link>
           </li>
-          <li className="phoneMenuItem">
-            <Link to="/bookmark" className="linkStyle">
+          <li className="phone-menu-item">
+            <Link to="/bookmark" className="link-style">
               BOOKMARKS
             </Link>
           </li>
-          <li className="phoneMenuItem">
+          <li className="phone-menu-item">
             <Button text="Log Out" onClick={handleLogout} />
           </li>
         </ul>

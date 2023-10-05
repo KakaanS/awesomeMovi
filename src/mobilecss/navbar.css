@@ -30,7 +30,7 @@
     }
 
     /* Styles for the phone menu button */
-    .phoneMenuButton {
+    .phone-menu-button {
         position: absolute;
         /* FIXED? */
         margin-top: -40px;
@@ -46,7 +46,7 @@
 
     }
 
-    .closePhoneMenuButton {
+    .close-phone-menu-button {
         position: absolute;
         top: 120px;
         left: 80px;
@@ -71,7 +71,7 @@
     }
 
     /* Styles for the phone menu */
-    .phoneMenu {
+    .phone-menu {
         position: fixed;
         top: 0;
         left: 0;
@@ -88,13 +88,13 @@
         z-index: 1;
     }
 
-    .phoneMenuItem {
+    .phone-menu-item {
         margin: 10px 0;
         width: 50%;
         height: 60px;
     }
 
-    .linkStyle {
+    .link-style {
         font-size: 26px;
     }
 
