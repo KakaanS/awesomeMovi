@@ -88,17 +88,10 @@ button:focus-visible {
   color: #008e7e;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #fff;
+@media (max-width: 653px) {
+  body {
+    padding: 0 0.5rem;
+
   }
 
-  a:hover {
-    color: #008e7e;
-  }
-
-  button {
-    background-color: #f9f9f9;
-  }
 }
