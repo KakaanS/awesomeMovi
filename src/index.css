@@ -44,7 +44,7 @@ ul {
 body {
   margin: 0;
   display: flex;
-  padding: 1rem 5rem;
+  padding: 1rem 3rem;
   min-width: 320px;
   min-height: 100vh;
 }
