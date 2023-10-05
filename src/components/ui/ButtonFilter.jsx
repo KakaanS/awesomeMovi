@@ -2,7 +2,7 @@ import "../../mobilecss/button-filter.css";
 
 const ButtonFilter = ({ text, onClick }) => {
   return (
-    <button className="buttonFilterStyle" onClick={onClick}>
+    <button className="button-filter-style" onClick={onClick}>
       {text}
     </button>
   );

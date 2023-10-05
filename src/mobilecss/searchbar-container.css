@@ -1,23 +1,21 @@
- .searchbarContainerStyle {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     height: 6rem;
-     width: 100%;
- }
+.searchbar-container-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6rem;
+  width: 100%;
+}
 
- .searchbarStyle {
-     padding: 15;
-     text-align: left;
-     background-color: white;
-     border-radius: 50px;
-     width: 40%;
-     outline: none;
-     border: none;
- }
+.searchbar-style {
+  padding: 15;
+  text-align: left;
+  background-color: white;
+  border-radius: 50px;
+  width: 40%;
+  outline: none;
+  border: none;
+}
 
- .iconStyle {
-     color: white;
- }
-
- ;
+.icon-style {
+  color: white;
+}
