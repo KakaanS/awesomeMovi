@@ -30,7 +30,8 @@
 
     /* Styles for the phone menu button */
     .phoneMenuButton {
-        position: absolute; /* FIXED? */
+        position: absolute;
+        /* FIXED? */
         z-index: 2;
         width: 60px;
         height: 60px;
@@ -44,7 +45,7 @@
 
     }
 
- 
+
     /* Styles for the open menu button icon */
     .menuIcon.open {
         background-color: transparent;
@@ -66,7 +67,7 @@
         margin: 0;
         padding: 0;
         z-index: 1;
-   
+
     }
 
     .phoneMenuItem {
@@ -74,11 +75,21 @@
         width: 50%;
         height: 60px;
     }
-.linkStyle{
-    font-size: 26px;
+
+    .linkStyle {
+        font-size: 26px;
+    }
+
+    .i {
+        font-size: 30px;
+    }
+
 }
-.i{
-    font-size:30px;
-}
+
+
+@media (min-width: 768px) {
+    .phoneMenuButton {
+        display: none;
+    }
 
 }
