@@ -20,15 +20,17 @@
 @media (max-width: 768px) {
     .two-column-layout {
         flex-direction: column;
+        padding: 0;
     }
 
     .image {
         padding-top: 40px;
-        max-width: 70%;
+        max-width: 100%;
+        padding-right: 0;
     }
 
     .text-container {
         flex: 1;
-        max-width: 70%;
+        max-width: 100%;
     }
 }
