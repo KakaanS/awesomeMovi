@@ -3,12 +3,28 @@
   line-height: 1.5;
   font-weight: 400;
   color: #fff;
-  background-color: #1D1D1D;
+  background-color: #1d1d1d;
   font-synthesis: none;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: 100%;
+}
+
+nav {
+  padding: 10px 0;
+}
+
+li {
+  margin: 0 20px;
+}
+
+.link {
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 a {
@@ -28,6 +44,7 @@ ul {
 body {
   margin: 0;
   display: flex;
+  padding: 1rem 5rem;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -35,6 +52,15 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+img {
+  margin-bottom: 1rem;
 }
 
 button {

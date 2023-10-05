@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import { useCookies } from "react-cookie";
 
 export const AuthContext = createContext({
   user: null,
@@ -14,17 +14,17 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-// eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const navigate = useNavigate();
 
   const justLoggedIn = useRef(false);
 
   const login = (token) => {
     try {
-      Cookies.set("token", token, { expires: 7, secure: true });
-      setUser({ token });
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 1);
+      setCookie("token", token, { expires: expirationDate, secure: true });
       justLoggedIn.current = true;
     } catch (error) {
       console.error("Failed to log in:", error);
@@ -32,35 +32,25 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const storedToken = Cookies.get("token");
-
-    if (storedToken) {
-      setUser({ token: storedToken });
-    } else {
-      navigate("/awesomeMovi/login");
-    }
-  }, [navigate]);
-
-  useEffect(() => {
-    if (user && justLoggedIn.current) {
-      navigate("/awesomeMovi/");
+    if (cookies.token && justLoggedIn.current) {
+      navigate("/");
       justLoggedIn.current = false;
+    } else if (!cookies.token) {
+      navigate("/login");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, [cookies, navigate]);
 
   const logout = () => {
     try {
-      Cookies.remove("token");
-      setUser(null);
-      navigate("/awesomeMovi/login");
+      removeCookie("token");
+      navigate("/login");
     } catch (error) {
       console.error("Failed to log out:", error);
     }
   };
 
   const value = {
-    user,
+    user: cookies.token ? { token: cookies.token } : null,
     login,
     logout,
   };

@@ -6,7 +6,7 @@ import userEvent from "@testing-library/user-event";
 
 // Set up recurrent rendering configuration for testing the 'Categories' component
 beforeEach(() => {
-  const route = "/awesomeMovi/categories";
+  const route = "/categories";
   render(
     <MemoryRouter initialEntries={[route]}>
       <Categories />
@@ -38,8 +38,9 @@ test("should display all 15 category titles", () => {
 
 // Test code for 'All movies' button functionality
 test("should display all movies when 'All movies' button is clicked", async () => {
-const lists = screen.getAllByRole("list");
-  const categoriesList = lists[1];  const allMoviesButton = screen.getByRole("button", { name: "All movies" });
+  const lists = screen.getAllByRole("list");
+  const categoriesList = lists[1];
+  const allMoviesButton = screen.getByRole("button", { name: "All movies" });
 
   const user = userEvent.setup();
 
@@ -56,7 +57,7 @@ const lists = screen.getAllByRole("list");
 
 // Test verifies that the correct movies within a category are rendered when clicked
 test("should display movies of specific category", async () => {
-const lists = screen.getAllByRole("list");
+  const lists = screen.getAllByRole("list");
   const categoriesList = lists[1];
   const horrorButton = within(categoriesList).getByRole("button", {
     name: "Horror",

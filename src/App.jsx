@@ -1,19 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
-import Categories from "./pages/Categories";
-import PageLogin from "./pages/Login";
+import HomePage from "./pages/Home";
+import CategoriesPage from "./pages/Categories";
+import LoginPage from "./pages/Login";
 import MovieDetailPage from "./pages/MovieDetail";
-import BookMarks from "./pages/BookMarks";
+import BookMarksPage from "./pages/BookMarks";
 
 function App() {
   return (
     <Routes>
-      <Route path="/awesomeMovi/login" element={<PageLogin />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/movie/:id" element={<MovieDetailPage />} />
-      <Route path="/awesomeMovi/" element={<Home />} />
-      <Route path="/awesomeMovi/categories" element={<Categories />} />
-      <Route path="/awesomeMovi/bookmark" element={<BookMarks />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/categories" element={<CategoriesPage />} />
+      <Route path="/bookmark" element={<BookMarksPage />} />
     </Routes>
   );
 }

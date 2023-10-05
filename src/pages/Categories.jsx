@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import movieData from "../data/movies.json";
-import Category from "../component/Category";
-import MovieCard from "../component/ui/MovieCard";
-import Title from "../component/ui/Title";
-import Button from "../component/ui/Button";
-import Navbar from "../component/ui/Navbar";
-import ButtonFilter from "../component/ui/ButtonFilter";
+import Category from "../components/Category";
+import MovieCard from "../components/ui/MovieCard";
+import Title from "../components/ui/Title";
+import Button from "../components/ui/Button";
+import Navbar from "../components/ui/Navbar";
+import ButtonFilter from "../components/ui/ButtonFilter";
 /**
  * Renders Alist of categories and movies. Allows user to select a category to view its movies
  *
  */
-const Categories = () => {
+const CategoriesPage = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [showAllMovies, setShowAllMovies] = useState(true);
@@ -48,7 +48,7 @@ const Categories = () => {
         style={{ margin: "20px" }}
       />
       <ul style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}>
-         {/* Display category buttons */}
+        {/* Display category buttons */}
         {categories.map((category, index) => (
           <div key={index} style={{ flexBasis: "10%", margin: "5px" }}>
             <ButtonFilter
@@ -71,4 +71,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default CategoriesPage;
