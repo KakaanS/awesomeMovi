@@ -6,6 +6,7 @@
   border: 1px solid #008e7e;
   text-transform: uppercase;
   font-size: 10px;
+  width: 120px;
 }
 
 
@@ -17,6 +18,11 @@
   height: fit-content;
   display: block;
   text-transform: uppercase;
+  /* Make it display in  row */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 }
 
 
