@@ -52,7 +52,7 @@ const CategoriesPage = () => {
       <div className="filter-btn" onClick={toggleFilterContainer}>
         {/*         <FontAwesomeIcon icon={faFilter} />{" "}
          */}{" "}
-        <Title text="Sort movies by genre: All Movies" />
+        <Title style="font-sice: 20;" text="Filter" />
       </div>
       {filterContainerVisible && (
         <div className="all-filter-container">
