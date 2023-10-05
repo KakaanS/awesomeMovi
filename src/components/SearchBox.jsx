@@ -26,7 +26,7 @@ const SearchBox = ({setSearchResults, searchText, setSearchText}) => {
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
         placeholder="Search for a movie..."
-        type="search"
+        type="text"
       />
 
     </div>
