@@ -7,3 +7,15 @@
     text-transform: uppercase;
     font-size: 10px;
 }
+
+
+@media (max-width: 653px) {
+    .filter-button {
+        padding: 0 0.6rem;
+    }
+
+    .buttonFilterStyle {
+        padding: 5px 20px;
+    }
+
+}
