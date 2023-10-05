@@ -5,6 +5,8 @@ import { useAuth } from "../../context/AuthCtx";
 import "../../mobilecss/navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+
 const Navbar = () => {
   const { logout } = useAuth();
   const [phoneMenuVisible, setPhoneMenuVisible] = useState(false);
@@ -49,7 +51,14 @@ const Navbar = () => {
       {/* Phone menu button (visible on phones) */}
       <div className="phoneMenuButton" onClick={togglePhoneMenu}>
         {/* Mobile menu button with three horizontal lines */}
-        <FontAwesomeIcon className="i" icon={faBars} />
+
+        {phoneMenuVisible ? (
+          // X icon when menu is open.
+          <FontAwesomeIcon className="i"  icon={faX} />
+        ) : (
+          // Bars icon when menu is closed.
+          <FontAwesomeIcon className="i" icon={faBars} />
+        )}
       </div>
 
       {/* Phone menu (visible on phones when the button is clicked) */}
