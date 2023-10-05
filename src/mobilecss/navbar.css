@@ -27,7 +27,7 @@
 
     /* Hide the unordered list on Desktop */
     .ul-style {
-        visibility: hidden;
+        display: none;
     }
 
     /* Styles for the phone menu button */
@@ -49,8 +49,8 @@
 
     .close-phone-menu-button {
         position: absolute;
-        top: 120px;
-        left: 80px;
+        top: 50px;
+        left: 50px;
         /* FIXED? */
         z-index: 2;
         margin-top: -40px;
@@ -112,5 +112,5 @@
         display: none;
     }
 
-    
+   
 }

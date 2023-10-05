@@ -32,7 +32,13 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    const redirect = () => {
+      if (location.pathname === "/login") {
+        justLoggedIn.current = true;
+      }
+    };
     if (cookies.token && justLoggedIn.current) {
+      redirect();
       navigate("/");
       justLoggedIn.current = false;
     } else if (!cookies.token) {
