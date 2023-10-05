@@ -10,11 +10,3 @@
 .read-the-docs {
   color: #888;
 }
-
-@media (max-width: 768px) {
-  #root {
-      width: 100%;
-  }
-
-
-}
