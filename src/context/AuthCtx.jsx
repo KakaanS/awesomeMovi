@@ -2,6 +2,7 @@ import { createContext, useContext } from "react";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { useLocation } from "react-router-dom";
 
 export const AuthContext = createContext({
   user: null,
@@ -17,6 +18,7 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const justLoggedIn = useRef(false);
 
@@ -32,13 +34,18 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const redirect = () => {
-      if (location.pathname === "/login") {
-        justLoggedIn.current = true;
+    const isLoginPage = location.pathname.includes("/login");
+    if (cookies.token) {
+      if (isLoginPage) {
+        navigate("/");
       }
-    };
+    } else if (!cookies.token && !isLoginPage) {
+      navigate("/login");
+    }
+  }, [cookies, location, navigate]);
+
+  useEffect(() => {
     if (cookies.token && justLoggedIn.current) {
-      redirect();
       navigate("/");
       justLoggedIn.current = false;
     } else if (!cookies.token) {
