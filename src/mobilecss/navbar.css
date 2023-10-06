@@ -23,7 +23,7 @@
 
 /* Media query for phones */
 /* stylelint-disable-next-line media-feature-range-notation */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navbar-style {
     padding: 20px 0;
   }
@@ -96,7 +96,7 @@
 }
 
 /* stylelint-disable-next-line media-feature-range-notation */
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .phone-menu-button {
     display: none;
   }
