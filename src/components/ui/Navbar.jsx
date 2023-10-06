@@ -70,17 +70,36 @@ const Navbars = () => {
           </div>
 
           <li className="phone-menu-item">
-            <Link to="/" className="link-style" onClick={handleHomeClick}>
+            <Link
+              to="/"
+              className="link-style"
+              onClick={(e) => {
+                handleHomeClick(e);
+                togglePhoneMenu(); // Call togglePhoneMenu function
+              }}
+            >
               HOME
             </Link>
           </li>
           <li className="phone-menu-item">
-            <Link to="/categories" className="link-style">
+            <Link
+              to="/categories"
+              onClick={(e) => {
+                togglePhoneMenu(); // Call togglePhoneMenu function
+              }}
+              className="link-style"
+            >
               CATEGORY
             </Link>
           </li>
           <li className="phone-menu-item">
-            <Link to="/bookmark" className="link-style">
+            <Link
+              to="/bookmark"
+              onClick={(e) => {
+                togglePhoneMenu(); // Call togglePhoneMenu function
+              }}
+              className="link-style"
+            >
               BOOKMARKS
             </Link>
           </li>
