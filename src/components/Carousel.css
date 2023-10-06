@@ -3,7 +3,7 @@
   position: relative;
   justify-content: center;
   align-items: center;
-  height: 400px;
+  height: fit-content;
   margin-bottom: 5em;
 }
 
