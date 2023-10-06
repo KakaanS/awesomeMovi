@@ -8,4 +8,12 @@ const Button = ({ text, onClick }) => {
   );
 };
 
-export default Button;
+const ButtonLogin = ({ text, onClick }) => {
+  return (
+    <button className="button-style-login" onClick={onClick}>
+      {text}
+    </button>
+  );
+};
+
+export { Button, ButtonLogin };

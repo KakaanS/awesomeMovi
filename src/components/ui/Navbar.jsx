@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import { Button } from "./Button";
 import { useAuth } from "../../context/AuthCtx";
 import "../../mobilecss/navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
