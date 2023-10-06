@@ -1,6 +1,7 @@
 import dataBase from '../data/movies.json';
-import MovieCard from './ui/MovieCard';
 import TitleLine from './ui/TitleLine';
+import Carousel from './Carousel';
+
 
 const RecomendedMovies = () => {
   // Plocka ut filmer som inte har trending=true
@@ -21,10 +22,9 @@ const RecomendedMovies = () => {
   return (
     <div>
       <TitleLine text="Recommended for you" />
+
       <div>
-        {randomMovies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-        ))}
+         <Carousel data={randomMovies} />
       </div>
     </div>
   );
