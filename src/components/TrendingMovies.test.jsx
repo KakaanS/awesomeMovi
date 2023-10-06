@@ -23,5 +23,5 @@ test("Shows list with movies", () => {
     </MemoryRouter>
   );
   const movieCards = screen.getAllByTestId("movieCard");
-  expect(movieCards.length).toBe(13);
+  expect(movieCards.length).toBe(15);
 });
