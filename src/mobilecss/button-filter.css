@@ -7,3 +7,41 @@
   text-transform: uppercase;
   font-size: 10px;
 }
+
+
+
+
+@media (max-width: 768px) {
+  .mobile-dropdown-container {
+    width: 95%;
+    height: fit-content;
+    background-color: transparent;
+
+  }
+
+  .desktop-ul {
+    display: none !important;
+  }
+
+  .hide-and-show-dropdown {
+    width: 95%;
+    height: 50px;
+    margin-top: 15px;
+
+    background-color: transparent;
+    align-items: center;
+    display: flex;
+    border: none;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .hide-and-show-dropdown {
+    display: none;
+  }
+
+  .mobile-dropdown-container {
+    display: none;
+  }
+}
