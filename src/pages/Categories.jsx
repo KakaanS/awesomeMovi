@@ -6,6 +6,7 @@ import Title from "../components/ui/Title";
 import { Button } from "../components/ui/Button";
 import Navbar from "../components/ui/Navbar";
 import ButtonFilter from "../components/ui/ButtonFilter";
+import Subheading from "../components/ui/Subheading";
 /**
  * Renders Alist of categories and movies. Allows user to select a category to view its movies
  *
@@ -70,7 +71,7 @@ const CategoriesPage = () => {
         ))}
       </ul>
       <div className="hide-and-show-dropdown" onClick={togglePhoneMenu}>
-        <Title text="Filter by genre" />
+        <Subheading text="Filter by genre" />
       </div>
       {/* Moible dropdown UL container START */}
       {phoneDropdownVisible && (

@@ -41,6 +41,7 @@
     align-items: center;
     display: flex;
     border: none;
+    font-size: 12px;
   }
 
 }
@@ -50,6 +51,7 @@
   /* Hides the hide/show button on desktop */
   .hide-and-show-dropdown {
     display: none;
+    
   }
 
   /* Hides the mobile dropdown on desktop */
