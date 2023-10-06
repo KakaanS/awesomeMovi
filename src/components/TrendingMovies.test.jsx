@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import TrendingMovies from "./TrendingMovies";
 
@@ -11,18 +11,16 @@ test('Shows the text "Trending"', () => {
       <TrendingMovies />
     </MemoryRouter>
   );
-  const documentText = document.body.textContent;
-  expect(documentText).toContain("Trending");
+  const documentText = screen.getByText("Trending");
+  expect(documentText).toBeInTheDocument
 });
-
-//Checks if the page contains a div with movies
-
+//Checks if there is 7 movies showing in trending
 test("Shows list whit movies", () => {
-  const { container } = render(
+render(
     <MemoryRouter>
       <TrendingMovies />
     </MemoryRouter>
   );
-  const movieList = container.querySelector("div");
-  expect(movieList).toBeTruthy();
+const movieCards = screen.getAllByTestId("movieCard");
+expect(movieCards.length).toBe(7);
 });
