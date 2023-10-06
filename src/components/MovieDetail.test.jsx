@@ -7,11 +7,11 @@ import MovieDetail from "./MovieDetail";
 const mockMovie = {
   title: "Exempelfilm",
   rating: "R",
-  actors: "Skådespelare 1, Skådespelare 2",
+  actors: ["Skådespelare 1", "Skådespelare 2"],
   genre: "Action",
   synopsis: "Detta är en exempelbeskrivning av filmen.",
   thumbnail: "exempel.jpg",
- name: "Exempelfilm",
+  name: "Exempelfilm",
 };
 
 test("Renderar filminformation korrekt från databasen", async () => {

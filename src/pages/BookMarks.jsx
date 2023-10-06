@@ -2,7 +2,7 @@ import MovieCard from "../components/ui/MovieCard";
 import { useBookmark } from "../context/BookMarkCtx";
 import Navbar from "../components/ui/Navbar";
 import Title from "../components/ui/Title";
-import TextParagraph from "../components/ui/TextParagraph";
+import TextParagraphBookmark from "../components/ui/TextParagraphBookmark";
 
 const BookMarksPage = () => {
   const { bookmarks } = useBookmark();
@@ -10,10 +10,11 @@ const BookMarksPage = () => {
   return (
     <div>
       <Navbar />
+
       <div>
-        <Title text="Your Bookmarks" style={{ paddingLeft: 0 }} />
+        <Title text="Your Bookmarks" />
         {bookmarks?.length === 0 ? (
-          <TextParagraph> No bookmarked movies in your list.</TextParagraph>
+          <TextParagraphBookmark> No bookmarked movies in your list.</TextParagraphBookmark>
         ) : (
           <div data-testid="bookmarkCard">
             {bookmarks?.map((movie) => (

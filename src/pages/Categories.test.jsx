@@ -16,7 +16,6 @@ beforeEach(() => {
 
 // Test checks that the heading is displayed
 test("should display the heading 'Categories'", () => {
-  screen.debug();
   expect(screen.getByText("Categories")).toBeInTheDocument();
 });
 
@@ -38,40 +37,48 @@ test("should display all 15 category titles", () => {
 
 // Test code for 'All movies' button functionality
 test("should display all movies when 'All movies' button is clicked", async () => {
+  const user = userEvent.setup();
   const lists = screen.getAllByRole("list");
   const categoriesList = lists[1];
-  const allMoviesButton = screen.getByRole("button", { name: "All movies" });
-
-  const user = userEvent.setup();
 
   const horrorButton = within(categoriesList).getByRole("button", {
     name: "Horror",
   });
+  // Click on horror button so we dont have the default display with all movies
   await user.click(horrorButton);
 
-  await user.click(allMoviesButton);
-
+  // Check that only the movies in horror genre is rendered
   expect(screen.getByText("Psycho")).toBeInTheDocument();
+  expect(screen.queryByText("Rear Window")).not.toBeInTheDocument();
+  expect(screen.queryByText("Schindler's List")).not.toBeInTheDocument();
+
+  // All movies button functionality
+  const allMoviesButton = screen.getByRole("button", { name: "All movies" });
+  await user.click(allMoviesButton);
+  expect(screen.getByText("Psycho")).toBeInTheDocument();
+  expect(screen.getByText("Rear Window")).toBeInTheDocument();
   expect(screen.getByText("Schindler's List")).toBeInTheDocument();
 });
 
 // Test verifies that the correct movies within a category are rendered when clicked
 test("should display movies of specific category", async () => {
+  const user = userEvent.setup();
   const lists = screen.getAllByRole("list");
   const categoriesList = lists[1];
+
+  // Click on horror category and expect the movies within horror
   const horrorButton = within(categoriesList).getByRole("button", {
     name: "Horror",
   });
+  await user.click(horrorButton);
+  expect(screen.getByText("Psycho")).toBeInTheDocument();
+  expect(screen.queryByText("Schindler's List")).not.toBeInTheDocument();
+
+  // Proceed to click on history category and expect the movies within history
   const historyButton = within(categoriesList).getByRole("button", {
     name: "History",
   });
-
-  const user = userEvent.setup();
-  await user.click(horrorButton);
-
-  expect(screen.getByText("Psycho")).toBeInTheDocument();
-  expect(screen.queryByText("Schindler's List")).toBeNull();
-
   await user.click(historyButton);
   expect(screen.getByText("Schindler's List")).toBeInTheDocument();
+  expect(screen.queryByText("Psycho")).not.toBeInTheDocument();
 });

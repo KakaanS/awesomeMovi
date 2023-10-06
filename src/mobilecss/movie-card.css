@@ -4,6 +4,7 @@
   margin: 15px;
   vertical-align: top;
   flex-direction: row;
+  /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
   flex-wrap: wrap;
   justify-content: left;
 }
@@ -29,6 +30,13 @@
 
 .bookmark-button {
   position: absolute;
-  top: 0px;
+  top: 0;
   right: 10px;
+}
+
+/* stylelint-disable-next-line media-feature-range-notation */
+@media (max-width: 768px) {
+  .movie-image {
+    width: 100%;
+  }
 }

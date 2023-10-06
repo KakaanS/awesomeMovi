@@ -6,3 +6,12 @@
   border-radius: 0;
   padding: 7px;
 }
+
+/* stylelint-disable-next-line media-feature-range-notation */
+@media (max-width: 768px) {
+  .button-bookmark-style {
+    width: 3rem;
+    font-size: 20px;
+    margin-top: 0;
+  }
+}

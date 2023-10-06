@@ -6,3 +6,28 @@
   cursor: pointer;
   text-transform: uppercase;
 }
+
+.button-style-login {
+  background-color: #008e7e;
+  border-radius: 20px;
+  padding: 8px 20px;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 30%;
+  
+}
+
+/* stylelint-disable-next-line media-feature-range-notation */
+@media (max-width: 768px) {
+  .button-all-movies {
+    margin-left: 1rem;
+  }
+
+  .button-style {
+    padding: 8px 20px;
+  }
+  .button-style-login {
+    width: 100%;
+  }
+}

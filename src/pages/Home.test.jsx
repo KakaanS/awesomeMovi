@@ -20,21 +20,17 @@ test("full app rendering landing page", async () => {
 });
 
 // test to see if it is possible to search for all movies starting with "t"
-
 test('searching for all movies that starts whit the letter "t"', async () => {
-  const { getByPlaceholderText, getAllByText } = render(
+   const user = userEvent.setup()
+  render(
     <MemoryRouter>
       <Home />
     </MemoryRouter>
   );
+  const inputElement = screen.getByPlaceholderText("Search for a movie...");
+  await user.type(inputElement, "t");
 
-  const inputElement = getByPlaceholderText("Search for a movie...");
-
-  userEvent.type(inputElement, "t");
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  const movieTitles = getAllByText(/t.*/i);
-
+  const movieTitles = await screen.getAllByText(/t.*/i);
   movieTitles.forEach((titleElement) => {
     expect(titleElement.textContent.toLowerCase()).toContain("t");
   });
