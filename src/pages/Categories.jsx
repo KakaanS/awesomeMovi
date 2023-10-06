@@ -3,7 +3,7 @@ import movieData from "../data/movies.json";
 import Category from "../components/Category";
 import MovieCard from "../components/ui/MovieCard";
 import Title from "../components/ui/Title";
-import Button from "../components/ui/Button";
+import { Button } from "../components/ui/Button";
 import Navbar from "../components/ui/Navbar";
 import ButtonFilter from "../components/ui/ButtonFilter";
 /**

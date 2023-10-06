@@ -2,7 +2,7 @@ import { useState } from "react";
 // function & styling
 import { useAuth } from "../context/AuthCtx";
 import userData from "../data/userData.json";
-import Button from "./ui/Button";
+import { ButtonLogin } from "./ui/Button";
 import Title from "./ui/Title";
 import InputLogin from "./ui/InputLogin";
 import Form from "./ui/Form";
@@ -50,7 +50,7 @@ const Login = () => {
           placeholder="Password..."
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button className="button-login" type="submit" text="Login" />
+        <ButtonLogin className="button-login" type="submit" text="Login" />
       </Form>
       {message && <p>{message}</p>}
     </div>
