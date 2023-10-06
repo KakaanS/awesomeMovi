@@ -14,6 +14,7 @@ const CategoriesPage = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [showAllMovies, setShowAllMovies] = useState(true);
+  const [phoneDropdownVisible, setPhoneDropdownVisible] = useState(false);
 
   // Filter the genres to extract one of each
   useEffect(() => {
@@ -38,16 +39,25 @@ const CategoriesPage = () => {
     setSelectedCategory(null);
   };
 
+  // Toggles the mobile dropdown
+  const togglePhoneMenu = () => {
+    setPhoneDropdownVisible(!phoneDropdownVisible);
+  };
+
   return (
     <div>
       <Navbar />
       <Title text="Categories" />
       <Button
+        id="all-movies-btn"
         onClick={handleShowAllMovies}
         text="All movies"
         style={{ margin: "20px" }}
       />
-      <ul style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}>
+      <ul
+        className="desktop-ul"
+        style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}
+      >
         {/* Display category buttons */}
         {categories.map((category, index) => (
           <div key={index} style={{ flexBasis: "10%", margin: "5px" }}>
@@ -59,12 +69,40 @@ const CategoriesPage = () => {
           </div>
         ))}
       </ul>
+      <div className="hide-and-show-dropdown" onClick={togglePhoneMenu}>
+        <Title text="Filter by genre" />
+      </div>
+      {/* Moible dropdown UL container START */}
+      {phoneDropdownVisible && (
+        <div className="mobile-dropdown-container">
+          <ul
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "left",
+            }}
+          >
+            {/* Display category buttons */}
+            {categories.map((category, index) => (
+              <div key={index} style={{ flexBasis: "10%", margin: "5px" }}>
+                <ButtonFilter
+                  onClick={() => {
+                    handleCategoryClick(category);
+                    setPhoneDropdownVisible(false); // Close the mobile menu after a genre has been choosen
+                  }}
+                  text={category}
+                  style={{ width: "100%" }}
+                />
+              </div>
+            ))}
+          </ul>
+        </div>
+      )}
+      {/* Mobile dropdown END */}
       {/* Display movies when a category is selected */}
       {selectedCategory && <Category category={selectedCategory} />}
       {showAllMovies &&
-        movieData.map((movie) => (
-            <MovieCard movie={movie} key={movie.id} />
-        ))}
+        movieData.map((movie) => <MovieCard movie={movie} key={movie.id} />)}
     </div>
   );
 };
