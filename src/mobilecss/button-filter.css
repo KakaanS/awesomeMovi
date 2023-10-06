@@ -12,10 +12,13 @@
 
 
 @media (max-width: 768px) {
+
+  /* Changes the width slightly for filter buttons in order to make them look more balanced */
   .button-filter-style {
     width: 110px;
   }
 
+  /* Gives the mobile dropdown, eg the container that holds all the buttons a design */
   .mobile-dropdown-container {
     margin-left: -5%;
     width: 95%;
@@ -24,15 +27,16 @@
 
   }
 
+  /* Hides the desktop ul on phone */
   .desktop-ul {
     display: none !important;
   }
 
+  /* the hide/show button */
   .hide-and-show-dropdown {
     width: 95%;
     height: 50px;
     margin-top: 15px;
-
     background-color: transparent;
     align-items: center;
     display: flex;
@@ -42,10 +46,13 @@
 }
 
 @media (min-width: 768px) {
+
+  /* Hides the hide/show button on desktop */
   .hide-and-show-dropdown {
     display: none;
   }
 
+  /* Hides the mobile dropdown on desktop */
   .mobile-dropdown-container {
     display: none;
   }

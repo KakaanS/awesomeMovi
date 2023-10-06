@@ -39,6 +39,7 @@ const CategoriesPage = () => {
     setSelectedCategory(null);
   };
 
+  // Toggles the mobile dropdown
   const togglePhoneMenu = () => {
     setPhoneDropdownVisible(!phoneDropdownVisible);
   };
@@ -68,11 +69,10 @@ const CategoriesPage = () => {
           </div>
         ))}
       </ul>
-
       <div className="hide-and-show-dropdown" onClick={togglePhoneMenu}>
         <Title text="Filter by genre" />
       </div>
-      {/* Moible dropdown UL container */}
+      {/* Moible dropdown UL container START */}
       {phoneDropdownVisible && (
         <div className="mobile-dropdown-container">
           <ul
@@ -88,7 +88,7 @@ const CategoriesPage = () => {
                 <ButtonFilter
                   onClick={() => {
                     handleCategoryClick(category);
-                    setPhoneDropdownVisible(false); // Close the mobile menu
+                    setPhoneDropdownVisible(false); // Close the mobile menu after a genre has been choosen
                   }}
                   text={category}
                   style={{ width: "100%" }}
@@ -98,6 +98,7 @@ const CategoriesPage = () => {
           </ul>
         </div>
       )}
+      {/* Mobile dropdown END */}
       {/* Display movies when a category is selected */}
       {selectedCategory && <Category category={selectedCategory} />}
       {showAllMovies &&
