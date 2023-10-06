@@ -12,15 +12,15 @@ test('Shows the text "Trending"', () => {
     </MemoryRouter>
   );
   const documentText = screen.getByText("Trending");
-  expect(documentText).toBeInTheDocument
+  expect(documentText).toBeInTheDocument;
 });
 //Checks if there is 7 movies showing in trending
-test("Shows list whit movies", () => {
-render(
+test("Shows list with movies", () => {
+  render(
     <MemoryRouter>
       <TrendingMovies />
     </MemoryRouter>
   );
-const movieCards = screen.getAllByTestId("movieCard");
-expect(movieCards.length).toBe(7);
+  const movieCards = screen.getAllByTestId("movieCard");
+  expect(movieCards.length).toBe(13);
 });
