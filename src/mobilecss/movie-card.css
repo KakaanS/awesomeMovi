@@ -32,3 +32,12 @@
   top: 0px;
   right: 10px;
 }
+
+@media (max-width: 768px) {
+  .movie-image {
+    width: 100%;
+  }
+
+
+
+}

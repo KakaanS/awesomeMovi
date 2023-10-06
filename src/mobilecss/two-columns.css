@@ -13,18 +13,21 @@
 
 .image {
     max-width: 35%;
-    padding-right: 40px;
+    padding-right: 70px;
 }
 
+ .movie-detail-info {
+     margin-bottom: 1rem;
+ }
 
 @media (max-width: 768px) {
     .two-column-layout {
-        flex-direction: column;
+        flex-direction: column-reverse;
         padding: 0;
     }
 
     .image {
-        padding-top: 40px;
+        padding-top: 20px;
         max-width: 100%;
         padding-right: 0;
     }
@@ -32,5 +35,9 @@
     .text-container {
         flex: 1;
         max-width: 100%;
+    }
+
+    .movie-detail-info {
+        margin-bottom: 1rem;
     }
 }
