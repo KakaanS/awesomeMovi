@@ -5,6 +5,8 @@ import TextParagraph from "./ui/TextParagraph";
 import BookMark from "./BookMarkButton";
 
 const MovieDetail = ({ movie }) => {
+  // Join the actors array with commas
+  const actorsList = movie.actors.join(", ");
   return (
     <div>
       <Navbar />
@@ -15,7 +17,7 @@ const MovieDetail = ({ movie }) => {
           <TextParagraph>RATING:</TextParagraph>
           {movie.rating}
           <TextParagraph>ACTORS: </TextParagraph>
-          {movie.actors}
+          {actorsList}
           <TextParagraph>GENRE: </TextParagraph>
           {movie.genre}
           <TextParagraph>SYNOPSIS: </TextParagraph>
