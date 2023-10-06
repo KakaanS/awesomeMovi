@@ -103,6 +103,7 @@
 }
 
 /* stylelint-disable-next-line media-feature-range-notation */
+/* Minor design improvment for  balanced look on tablet */
 @media (min-width: 768px) and (max-width: 1024px) {
   .link-style {
     font-size: 50px;
