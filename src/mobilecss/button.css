@@ -7,15 +7,14 @@
   text-transform: uppercase;
 }
 
+/* stylelint-disable-next-line media-feature-range-notation */
 @media (max-width: 768px) {
   .button-all-movies {
     margin-left: 1rem;
   }
 
-    .buttonStyle {
-      padding: 8px 20px;
-      margin-left: 1rem;
-      
-    }
-
+  .button-style {
+    padding: 8px 20px;
+    margin-left: 1rem;
+  }
 }

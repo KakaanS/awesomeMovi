@@ -16,13 +16,15 @@
   background-color: #008e7e;
 }
 
+/* stylelint-disable-next-line media-feature-range-notation */
 @media (max-width: 768px) {
-    .title-line {
-        width: 80%;
-        padding: 10px 0px;
-        font-size: 20px;
-    }
-        .title-line::after {
-            left: 0;
-        }
+  .title-line {
+    width: 80%;
+    padding: 10px 0;
+    font-size: 20px;
+  }
+
+  .title-line::after {
+    left: 0;
+  }
 }

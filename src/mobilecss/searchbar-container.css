@@ -19,11 +19,13 @@
   color: white;
 }
 
+/* stylelint-disable-next-line media-feature-range-notation */
 @media (max-width: 768px) {
-.searchbar-style {
+  .searchbar-style {
     width: 100%;
   }
-    .searchbar-container-style {
-     margin-top: 1rem;
-    }
+
+  .searchbar-container-style {
+    margin-top: 1rem;
+  }
 }

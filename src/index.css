@@ -79,10 +79,9 @@ button:focus-visible {
   color: #008e7e;
 }
 
+/* stylelint-disable-next-line media-feature-range-notation */
 @media (max-width: 768px) {
   body {
     padding: 0;
   }
-
-
 }
