@@ -84,4 +84,11 @@ button:focus-visible {
   body {
     padding: 0;
   }
-}
+    ul {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          padding: 0;
+        }
+    }
+
