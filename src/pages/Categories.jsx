@@ -86,7 +86,10 @@ const CategoriesPage = () => {
             {categories.map((category, index) => (
               <div key={index} style={{ flexBasis: "10%", margin: "5px" }}>
                 <ButtonFilter
-                  onClick={() => handleCategoryClick(category)}
+                  onClick={() => {
+                    handleCategoryClick(category);
+                    setPhoneDropdownVisible(false); // Close the mobile menu
+                  }}
                   text={category}
                   style={{ width: "100%" }}
                 />

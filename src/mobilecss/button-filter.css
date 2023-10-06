@@ -12,7 +12,12 @@
 
 
 @media (max-width: 768px) {
+  .button-filter-style {
+    width: 110px;
+  }
+
   .mobile-dropdown-container {
+    margin-left: -5%;
     width: 95%;
     height: fit-content;
     background-color: transparent;
