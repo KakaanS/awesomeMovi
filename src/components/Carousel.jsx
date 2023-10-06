@@ -12,8 +12,8 @@ const Carousel = ({ data }) => {
   const responsive = {
     0: { items: 1 },
     568: { items: 2 },
-    1024: { items: 3 },
-    1440: { items: 4 },
+    1024: { items: 4 },
+    1440: { items: 5 },
     3000: { items: 5 },
   };
 
