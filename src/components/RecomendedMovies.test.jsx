@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import RecomendedMovies from "./RecomendedMovies.jsx";
 
@@ -11,18 +11,34 @@ test('shows the text "Recommended for you"', () => {
       <RecomendedMovies />
     </MemoryRouter>
   );
-  const documentText = document.body.textContent;
-  expect(documentText).toContain("Recommended for you");
+    const documentText = screen.getByText("Recommended for you");
+    expect(documentText).toBeInTheDocument
 });
 
-//Checks if the page contains a div with movies
+//Checks if it render more then 4 movies 
 
 test("shows a list of movies", () => {
-  const { container } = render(
+  render(
     <MemoryRouter>
       <RecomendedMovies />
     </MemoryRouter>
   );
-  const movieList = container.querySelector("div");
-  expect(movieList).toBeTruthy();
+    const movieCards = screen.getAllByTestId("movieCard");
+    expect(movieCards.length).toBeGreaterThan(4);
 });
+
+//Checks to make sure there is no Trending movies in Recomended movies
+
+test("Doesn't show trending movies", () => {
+  render(
+    <MemoryRouter>
+      <RecomendedMovies />
+    </MemoryRouter>
+  );
+    const movieCards = screen.queryAllByTestId("movieCard"); 
+    const trendingMovies = movieCards.filter((movieCard) =>
+    screen.queryByText("Trending", { container: movieCard })
+  );
+    expect(trendingMovies.length).toBe(0); 
+});
+
