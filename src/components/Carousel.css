@@ -1,0 +1,74 @@
+/* stylelint-disable selector-class-pattern */
+.alice-carousel {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  margin-bottom: 5em;
+}
+
+.alice-carousel__stage-item > * {
+  display: flex;
+  justify-content: center;
+}
+
+.alice-carousel__next-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 190px;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  border: 1px solid #008e7e;
+  cursor: pointer;
+  background-color: #008f7e4d;
+}
+
+.alice-carousel__next-btn:hover {
+  border: 1px solid white;
+  transition: 0.2s ease-in-out;
+}
+
+.alice-carousel__prev-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 190px;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  border: 1px solid #008e7e;
+  cursor: pointer;
+  background-color: #008f7e4d;
+}
+
+.alice-carousel__prev-btn:hover {
+  border: 1px solid white;
+  transition: 0.2s ease-in-out;
+}
+
+/* Arrows */
+.alice-carousel__next-btn-item {
+  font-size: 1em;
+  color: #008e7e;
+}
+
+.alice-carousel__next-btn-item:hover {
+  color: white;
+  transition: 0.2s ease-in-out;
+}
+
+.alice-carousel__prev-btn-item {
+  font-size: 1em;
+  color: #008e7e;
+}
+
+.alice-carousel__prev-btn-item:hover {
+  color: white;
+  transition: 0.2s ease-in-out;
+}
