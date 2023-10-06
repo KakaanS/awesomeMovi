@@ -11,7 +11,7 @@
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 
   /* Changes the width slightly for filter buttons in order to make them look more balanced */
   .button-filter-style {
@@ -45,7 +45,7 @@
 
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
 
   /* Hides the hide/show button on desktop */
   .hide-and-show-dropdown {
