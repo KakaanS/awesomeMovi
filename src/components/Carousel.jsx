@@ -4,7 +4,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import "./Carousel.css";
 
 /**
- * 
+ *
  * Displays a carousel of movies from an array
  */
 
@@ -16,8 +16,9 @@ const Carousel = ({ data }) => {
     2048: { items: 4 },
     3000: { items: 5 },
   };
+
   return (
-    <div>
+    <div data-testid="movie-carousel">
       <AliceCarousel
         mouseTracking
         responsive={responsive}
