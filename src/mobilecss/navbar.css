@@ -102,8 +102,8 @@
   }
 }
 
-/* stylelint-disable-next-line media-feature-range-notation */
 /* Minor design improvment for  balanced look on tablet */
+/* stylelint-disable-next-line media-feature-range-notation */
 @media (min-width: 768px) and (max-width: 1024px) {
   .link-style {
     font-size: 50px;
@@ -112,6 +112,4 @@
   .phone-menu-item {
     margin-top: 30px;
   }
-
-
 }

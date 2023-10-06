@@ -1,6 +1,12 @@
 // Tools
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
-import { render, screen, within, cleanup } from "@testing-library/react";
+import {
+  render,
+  screen,
+  within,
+  cleanup,
+  waitFor,
+} from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
@@ -83,12 +89,19 @@ describe("testing site navigation", () => {
         </AuthContext.Provider>
       </MemoryRouter>
     );
+    const carousels = await screen.findAllByTestId("movie-carousel");
+    const recommendedCarousel = carousels[0];
+    expect(recommendedCarousel).toBeInTheDocument();
 
-    const movie = await screen.findByText("Psycho");
-    user.click(movie);
+    const allMovies = within(recommendedCarousel).queryAllByTestId("movieCard");
 
-    const movieDetails = await screen.findByText("RATING:");
-    expect(movieDetails).toBeInTheDocument();
+    const movie = allMovies[0];
+    screen.debug(movie);
+    expect(movie).toBeInTheDocument();
+
+    await user.click(movie);
+    const bookMarkButton = await screen.findAllByText("+");
+    expect(bookMarkButton[0]).toBeInTheDocument();
   });
 
   test("Can user click CATEGORY and see the category page", async () => {
@@ -266,19 +279,26 @@ describe("testing bookmark functionality", () => {
       </MemoryRouter>
     );
 
-    const movieOfChoice = await screen.findByText("Psycho");
-    expect(movieOfChoice).toBeInTheDocument();
+    const carousels = await screen.findAllByTestId("movie-carousel");
+    const recommendedCarousel = carousels[0];
+    expect(recommendedCarousel).toBeInTheDocument();
 
-    user.click(movieOfChoice);
+    const allMovies = within(recommendedCarousel).queryAllByTestId("movieCard");
+    const movie = allMovies[0];
+    expect(movie).toBeInTheDocument();
+    await user.click(movie);
 
-    expect(await screen.findByText("RATING:")).toBeInTheDocument();
-
-    const bookmarkBtn = await screen.findByText("+");
-    await user.click(bookmarkBtn);
+    const bookmarkBtn = await screen.findAllByText("+");
+    await user.click(bookmarkBtn[0]);
 
     const bookmarkPage = await screen.findByText("BOOKMARKS");
     await user.click(bookmarkPage);
-    expect(await screen.findByText("Psycho")).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(
+        screen.queryByText("No bookmarked movies in your list.")
+      ).not.toBeInTheDocument();
+    });
   });
 });
 

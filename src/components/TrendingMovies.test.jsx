@@ -16,8 +16,7 @@ test('Shows the text "Trending"', () => {
 });
 
 //Checks if there is 7 movies showing in trending
-
-test("Shows list whit movies", () => {
+test("Shows list with movies", () => {
   render(
     <MemoryRouter>
       <TrendingMovies />
